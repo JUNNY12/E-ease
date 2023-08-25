@@ -1,0 +1,8 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.card {
+    width: 100%;
+    height: 290px;
+    border: $border-width-small solid $black-400;
+}

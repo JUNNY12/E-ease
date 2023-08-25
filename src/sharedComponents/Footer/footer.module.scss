@@ -1,0 +1,117 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+
+.footerWrapper {
+    @include container;
+    margin: auto;
+    margin-top: $margin-2-25;
+    border-top: $border-width-small solid $black-200;
+}
+
+.footerLogo {
+    color: $black-950;
+    font-size: $font-size-huge;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+
+    @include tabletS {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mobileL {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobileS {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.footerList {
+    ul {
+        list-style-type: none;
+
+        li {
+            margin-bottom: $margin-medium;
+
+            a {
+                text-decoration: none;
+                color: $black-600;
+                @include transition-ease;
+
+                &:hover {
+                    color: $black-950;
+                    border-bottom: $border-width-small solid $black-950;
+                    font-weight: $font-weight-regular;
+                    @include transition-ease;
+                }
+            }
+        }
+    }
+}
+
+.selectInput {
+    border: $border-width-small solid $black-200;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: $border-radius-small;
+    @include transition-ease;
+
+    &:focus {
+        border: $border-width-small solid $seance-500;
+        @include transition-ease;
+    }
+}
+
+.footerBottom {
+    margin-top: $margin-large;
+    border-top: $border-width-small solid $black-200;
+    color: $black-600;
+    @include flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobileL {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.footerPara {
+    margin-top: $margin-large;
+}
+
+.socialIcons {
+    list-style-type: none;
+    @include flex;
+    align-items: center;
+
+
+    li {
+        margin-right: $margin-medium;
+        margin-top: $margin-large;
+        background-color: $white-100;
+        border: $border-width-small solid $black-400;
+        border-radius: $border-radius-small;
+        cursor: pointer;
+        color: $black-900;
+        padding: $padding-small;
+        @include flex-center;
+        @include transition-ease;
+
+        &:hover {
+            transform: scale(1.05);
+            @include transition-ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: $black-950;
+        }
+    }
+}

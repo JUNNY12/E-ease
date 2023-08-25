@@ -1,0 +1,9 @@
+@import '../../styles/mixins';
+
+.normal-button{
+    @include normal-button;
+}
+
+.primary-button{
+    @include primary-button;
+}

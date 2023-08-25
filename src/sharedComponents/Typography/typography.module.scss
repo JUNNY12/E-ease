@@ -1,0 +1,25 @@
+@import '../../styles/mixins';
+
+.heading-1{
+    @include heading-1;
+}
+
+.heading-2{
+    @include heading-2;
+}
+
+.heading-3{
+    @include heading-3;
+}
+
+.heading-4{
+    @include heading-4;
+}
+
+.heading-5{
+    @include heading-5;
+}
+
+.heading-6{
+    @include heading-6;
+}

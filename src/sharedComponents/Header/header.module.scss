@@ -1,0 +1,179 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+    @include container;
+    padding-top: $padding-medium;
+    padding-bottom: $padding-medium;
+}
+
+.navWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+
+        li {
+            margin-right: $margin-medium;
+
+            a {
+                text-decoration: none;
+                color: $black-600;
+                @include transition-ease;
+
+                &:hover {
+                    color: $black-950;
+                    border-bottom: $border-width-small solid $black-950;
+                    font-weight: $font-weight-regular;
+                    @include transition-ease;
+                }
+            }
+        }
+
+        li:first-child {
+            margin-right: $margin-xx-large;
+            color: $black-950;
+            font-size: $font-size-huge;
+        }
+
+        @include tabletL {
+            display: none;
+        }
+    }
+}
+
+.searchContainer {
+    @include mobileL {
+        display: none;
+    }
+}
+
+.searchInput {
+    @include input;
+    width: 400px;
+    border: $border-width-small solid $black-300;
+    padding: $padding-small;
+    @include transition-ease;
+
+    &:focus {
+        outline: none;
+        border: $border-width-medium solid $black-400;
+        @include transition-ease;
+    }
+}
+
+.dropSearch {
+    @extend .searchInput;
+    width: 100%;
+}
+
+.cartIcon {
+    background-color: $white-100;
+    border: $border-width-small solid $black-400;
+    border-radius: $border-radius-small;
+    font-size: 1.5rem;
+    height: 40px;
+    width: 40px;
+    @include flex-center;
+    color: $black-950;
+    cursor: pointer;
+    padding: $padding-small;
+    @include transition-ease;
+
+    &:hover {
+        transform: scale(1.05);
+        @include transition-ease;
+    }
+
+
+}
+
+.menuIcon {
+    @extend .cartIcon;
+    display: none;
+    font-size: 1.5rem;
+
+    @include tabletL {
+        display: block;
+    }
+}
+
+.responsiveLogo {
+    display: none;
+
+    a {
+        text-decoration: none;
+        color: $black-950;
+    }
+
+    @include mobileL {
+        display: block;
+    }
+}
+
+.menuContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: $white-50;
+    backdrop-filter: blur(5px);
+    padding: $padding-medium;
+    width: 350px;
+    z-index: 99999;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+    @include tabletS {
+        width: 100%;
+    }
+}
+
+.menuWrapper {
+    padding-top: $padding-xx-large;
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        margin-top: $margin-xx-large;
+
+        li {
+            margin-bottom: $margin-medium;
+            font-size: $font-size-large;
+            a {
+                text-decoration: none;
+                color: $black-600;
+                @include transition-ease;
+
+                &:hover {
+                    color: $black-950;
+                    border-bottom: $border-width-small solid $black-950;
+                    font-weight: $font-weight-regular;
+                    @include transition-ease;
+                }
+            }
+        }
+    }
+}
+
+.closeButton {
+    padding: $padding-small;
+    height: 40px;
+    width: 40px;
+    border: $border-width-small solid $black-200;
+    border-radius: $border-radius-small;
+    @include flex-center;
+    @include transition-ease;
+    cursor: pointer;
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+
+    &:hover {
+        transform: scale(1.05);
+        @include transition-ease
+    }
+}

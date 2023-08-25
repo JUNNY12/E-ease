@@ -1,0 +1,124 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.featureContainer {
+    @include container;
+}
+
+.gridContainer {
+    display: grid;
+    margin: auto;
+    place-items: center;
+    gap: 20px;
+    grid-template-areas: 'myArea myArea .' 'myArea myArea .';
+
+    @include tabletS {
+        grid-template-areas:
+            'myArea'
+            'myArea'
+            '.';
+        justify-items: center;
+    }
+}
+
+.column1 {
+    grid-area: myArea;
+    position: relative;
+    width: 100%;
+    height: 600px;
+
+    @include mobileL {
+        height: 400px;
+    }
+
+}
+
+.column2 {
+    position: relative;
+    width: 100%;
+    height: 290px;
+
+    @include tabletS {
+        height: 600px;
+    }
+
+    @include mobileL {
+        height: 400px;
+    }
+
+}
+
+.column3 {
+    @extend .column2
+}
+
+.imageStyle {
+    border: $border-width-small solid $black-400;
+    border-radius: $border-radius-medium;
+    cursor: pointer;
+    @include transition-ease;
+
+    &:hover {
+        transform: scale(1.01);
+        border: $border-width-small solid $seance-500;
+        @include transition-ease;
+    }
+}
+
+.buttonWrap {
+    @include card-button
+}
+
+.priceButton {
+    @include price-button
+}
+
+.productsGrid {
+    @include container;
+}
+
+.productsGridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    place-items: center;
+
+    @include tabletL {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include mobileL {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include mobileM {
+        grid-template-columns: repeat(8, 1fr);
+        height: 300px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+}
+
+.card {
+    width: 100%;
+    height: 290px;
+    position: relative;
+
+    @include mobileL {
+        height: 250px;
+        width: 250px;
+    }
+}
+
+.cardImage {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $border-radius-medium;
+}
+
+.productHeader {
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    margin-bottom: $margin-medium;
+}

@@ -1,0 +1,125 @@
+@import 'variables';
+
+
+@mixin normal-button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $white-100;
+    border-radius: $border-radius-small;
+    padding: $padding-small;
+    width: 150px;
+    @include transition-ease;
+    &:hover{
+        background-color: $seance-100;
+    }
+}
+
+@mixin primary-button{
+    @include normal-button;
+    background-color: $seance-600;
+    border-radius: $border-radius-medium;
+    color: $white-100;
+    &:hover{
+        background-color: $seance-700;
+    }
+}
+
+@mixin card-button{
+        background-color: $white-100;
+        border: $border-width-small solid $black-200;
+        border-radius: 24px;
+        padding: $padding-small;
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        cursor: pointer;
+        font-weight: $font-weight-regular;
+        font-size: $font-size-small;
+
+        @include tabletL(){
+            left: 5px;
+        }
+}
+@mixin price-button{
+        background-color: $seance-600;
+        color: $white-100;
+        display: inline-block;
+        margin-left: $margin-small;
+        padding: $padding-x-small;
+        border-radius: 12px;
+}
+
+@mixin transition-ease{
+    transition: 0.5s ease-in-out;
+}
+
+
+@mixin input{
+    border: none;
+    outline: none;
+    border-radius: $border-radius-medium;
+}
+
+@mixin container{
+    padding: $padding-xx-large;
+    @include tabletL{
+        padding: $padding-large;
+    }
+
+    @include mobileL(){
+        padding: $padding-medium;
+    }
+}
+
+@mixin flex{
+    display: flex;
+}
+
+@mixin flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+
+@mixin tabletL {
+    @media screen and (max-width: 992px) {
+        @content;
+    }
+}
+
+@mixin tabletS{
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin mobileL{
+    @media screen and (max-width: 576px) {
+        @content;
+    }
+}
+
+@mixin mobileM{
+    @media screen and (max-width: 425px) {
+        @content;
+    }
+}
+
+@mixin mobileS{
+    @media screen and (max-width: 375px) {
+        @content;
+    }
+}
+
+@mixin mobileXS{
+    @media screen and (max-width: 320px) {
+        @content;
+    }
+}
