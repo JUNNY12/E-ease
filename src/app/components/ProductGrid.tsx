@@ -4,7 +4,7 @@ import styles from "./styles/featured.module.scss"
 import { Card } from "@/sharedComponents/card/Card"
 import Image from "next/image"
 
-const images = [
+export const images = [
     {
         id: 1,
         path: '/images/image 1.jpg'
@@ -49,21 +49,23 @@ export default function ProductGrid() {
                 {
                     images.map((image) => {
                         return (
-                            <Card className={styles.card} key={image.id}>
-                                <Image
-                                    src={image.path}
-                                    priority={true}
-                                    fill={true}
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    style={{ objectFit: 'cover' }}
-                                    alt="product image"
-                                    className={styles.imageStyle}
-                                />
-                                <div className={styles.buttonWrap} role='button'>
-                                    <span> Lorem ipsum</span>
-                                    <span role='button' className={styles.priceButton}>$20.00</span>
-                                </div>
-                            </Card>
+                            <div key={image.id}>
+                                <Card className={styles.card}>
+                                    <Image
+                                        src={image.path}
+                                        priority={true}
+                                        fill={true}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        style={{ objectFit: 'cover' }}
+                                        alt="product image"
+                                        className={styles.imageStyle}
+                                    />
+                                    <div className={styles.buttonWrap} role='button'>
+                                        <span> Lorem ipsum</span>
+                                        <span role='button' className={styles.priceButton}>$20.00</span>
+                                    </div>
+                                </Card>
+                            </div>
                         )
                     })
                 }

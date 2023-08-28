@@ -88,6 +88,12 @@
 }
 
 
+@mixin laptopS {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+
 @mixin tabletL {
     @media screen and (max-width: 992px) {
         @content;

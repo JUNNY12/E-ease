@@ -1,0 +1,201 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.gridWrapper {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    gap: 20px;
+    min-height: 100vh;
+
+    @include tabletS {
+        grid-template-columns: 1fr;
+    }
+}
+
+.collectionHeader {
+    margin-bottom: $margin-medium;
+    font-size: $font-size-medium;
+}
+
+.sideWrapper {
+    ul {
+        list-style-type: none;
+
+        li {
+            margin-bottom: $margin-medium;
+
+            a {
+                text-decoration: none;
+                color: $black-600;
+                @include transition-ease;
+
+                &:hover {
+                    color: $black-950;
+                    border-bottom: $border-width-small solid $black-950;
+                    font-weight: $font-weight-regular;
+                    @include transition-ease;
+                }
+            }
+        }
+    }
+}
+
+.gridProducts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+
+    @include laptopS {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobileM {
+        grid-template-columns: 1fr;
+    }
+}
+
+.imageStyle {
+    border: $border-width-small solid $black-400;
+    border-radius: $border-radius-medium;
+    cursor: pointer;
+    @include transition-ease;
+
+    &:hover {
+        transform: scale(1.01);
+        border: $border-width-small solid $seance-500;
+        @include transition-ease;
+    }
+}
+
+.buttonWrap {
+    @include card-button;
+}
+
+.priceButton {
+    @include price-button
+}
+
+.productsGrid {
+    @include container;
+}
+
+.card {
+    width: 100%;
+    height: 300px;
+    position: relative;
+
+    a{
+        text-decoration: none;
+        color: $black-600;
+    }
+
+    @include mobileL {
+        width: 100%;
+    }
+}
+
+.notFoundContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+
+    p {
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-medium;
+        min-width: 250px;
+    }
+
+    a {
+        text-decoration: none;
+        color: $white-50;
+        background-color: $seance-500;
+        padding: $padding-small $padding-medium;
+        border-radius: $border-radius-medium;
+        @include transition-ease;
+
+        &:hover {
+            background-color: $seance-600;
+            @include transition-ease;
+        }
+    }
+
+}
+
+.collectionSideBar,
+.sortSideBar {
+    @include tabletS {
+        display: none;
+    }
+}
+
+.mobileCollection {
+    display: none;
+    padding-left: $padding-xx-large;
+    padding-right: $padding-xx-large;
+
+    @include tabletL {
+        padding-left: $padding-large;
+        padding-right: $padding-large;
+    }
+
+    @include tabletS {
+        display: block;
+    }
+
+    @include mobileL() {
+        padding-left: $padding-medium;
+        padding-right: $padding-medium;
+    }
+
+
+
+    button {
+        width: 100%;
+        padding: $padding-small $padding-medium;
+        border-radius: $border-radius-small;
+        outline: none;
+        border: $border-width-small solid $black-200;
+        @include transition-ease;
+        @include flex;
+        align-items: center;
+        background-color: $white-100;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    ul {
+        list-style-type: none;
+        background-color: $white-50;
+        border-radius: $border-radius-small;
+        padding: $padding-medium;
+        li {
+            margin-bottom: $margin-small;
+            font-size: $font-size-medium;
+
+            a {
+                text-decoration: none;
+                color: $black-600;
+                @include transition-ease;
+
+                &:hover {
+                    color: $black-950;
+                    border-bottom: $border-width-small solid $black-950;
+                    font-weight: $font-weight-regular;
+                    @include transition-ease;
+                }
+            }
+        }
+    }
+}
+
+.mobileSort {
+    @extend .mobileCollection;
+}
+
+.buttonContainer {
+    margin-bottom: $margin-small;
+}

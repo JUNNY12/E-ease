@@ -1,7 +1,7 @@
 import styles from './button.module.scss';
 
 type ButtonProps = {
-    children: string;
+    children: React.ReactNode;
     onClick?: () => void;
     title?: string;
     className?: string;

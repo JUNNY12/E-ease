@@ -1,7 +1,7 @@
 import styles from './footer.module.scss'
 import Link from 'next/link'
-import {FaTwitter, FaInstagram, FaFacebook} from 'react-icons/fa'
-
+import { FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa'
+import Logo from '../Logo/Logo'
 
 export default function Footer() {
 
@@ -10,8 +10,8 @@ export default function Footer() {
     return (
         <footer className={styles.footerWrapper}>
             <div className={styles.gridContainer}>
-                <div className={styles.footerLogo} >
-                    E-Ease
+                <div>
+                    <Logo />
                 </div>
 
                 <div className={styles.footerList}>

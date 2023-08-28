@@ -8,6 +8,7 @@ import { GrMenu } from "react-icons/gr"
 import Logo from "../Logo/Logo"
 import DropDownMenu from "./DropDownMenu"
 import Search from "../Search/Search"
+import { FaSearch } from "react-icons/fa"
 
 
 export default function Header() {
@@ -38,18 +39,19 @@ export default function Header() {
                 <ul>
                     <li><Logo /></li>
                     <li className={styles.navLink}>
-                        <Link href="#">All</Link>
+                        <Link href="/search">All</Link>
                     </li>
                     <li className={styles.navLink}>
-                        <Link href="#">E-books</Link>
+                        <Link href="/search/E-book">E-books</Link>
                     </li>
                     <li className={styles.navLink}>
-                        <Link href="#">Literatures</Link>
+                        <Link href="/search/Literature">Literatures</Link>
                     </li>
                 </ul>
 
                 <div className={styles.searchContainer}>
                     <Search className={styles.searchInput} />
+                    <FaSearch className={styles.searchIcon} />
                 </div>
 
                 <div

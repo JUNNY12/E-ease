@@ -47,9 +47,19 @@
 }
 
 .searchContainer {
+    position: relative;
     @include mobileL {
         display: none;
     }
+}
+
+.searchIcon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: $black-600;
+    font-size: $font-size-huge;
 }
 
 .searchInput {
@@ -59,6 +69,10 @@
     padding: $padding-small;
     @include transition-ease;
 
+    &::placeholder{
+        color: $black-600;
+        font-size: $font-size-medium;
+    }
     &:focus {
         outline: none;
         border: $border-width-medium solid $black-400;

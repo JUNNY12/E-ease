@@ -1,5 +1,6 @@
 "use client"
-import { createContext, useState, useCallback, useMemo } from "react";
+import { createContext, useState, useCallback, useMemo, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export type HandleToggleContextType = {
     toggleCart: boolean,
@@ -32,6 +33,15 @@ export function HandleToggleProvider({ children }: ChildrenProps) {
     const [toggleMenu, setToggleMenu] = useState<boolean>(false)
     const [showOverlay, setShowOverlay] = useState<boolean>(false)
 
+    const pathName = usePathname();
+
+    useEffect(() =>{
+        setToggleMenu(false)
+        setToggleCart(false)
+        setShowOverlay(false)
+    }, [pathName])
+
+    
     const handleOpenCart = useCallback(() => {
         setToggleCart(true)
         document.body.style.overflow = 'hidden'

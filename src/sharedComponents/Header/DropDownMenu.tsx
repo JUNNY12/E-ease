@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react'
 import Search from '../Search/Search'
 import Link from 'next/link'
 
-
 export default function DropDownMenu() {
     const { handleOutsideClick, handleCloseMenu, toggleMenu } = useHandleToggle()
     const ref = useRef<HTMLDivElement>(null)
@@ -33,13 +32,13 @@ export default function DropDownMenu() {
                 <div>
                     <ul>
                         <li>
-                            <Link href="#">All</Link>
+                            <Link href="/search">All</Link>
                         </li>
                         <li>
-                            <Link href="#">E-books</Link>
+                            <Link href="/search/E-books">E-books</Link>
                         </li>
                         <li>
-                            <Link href="#">Literatures</Link>
+                            <Link href="/search/Literature">Literatures</Link>
                         </li>
                     </ul>
                 </div>

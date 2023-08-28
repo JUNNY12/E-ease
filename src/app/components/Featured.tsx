@@ -7,18 +7,18 @@ export default function Featured() {
     <section className={styles.featureContainer}>
       <Typography variant={1} className={styles.productHeader}>Featured</Typography>
       <div className={styles.gridContainer}>
-        
+
         <div className={styles.column1}>
-          <Image 
-          src={'/images/image 1.jpg'}
-          priority={true}
-          fill={true}
-          style={{objectFit: 'cover'}}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          alt={'featured image'}
-          className={styles.imageStyle}
+          <Image
+            src={'/images/image 1.jpg'}
+            priority={true}
+            fill={true}
+            style={{ objectFit: 'cover' }}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            alt={'featured image'}
+            className={styles.imageStyle}
           />
-          
+
           <div className={styles.buttonWrap} role='button'>
             <span> The Secret Library</span>
             <span role='button' className={styles.priceButton}>$20.00</span>

@@ -6,3 +6,39 @@
     height: 290px;
     border: $border-width-small solid $black-400;
 }
+.cardLoader {
+    max-width: 250px;
+    border-radius: $border-radius-medium;
+    height: 300px;
+    background-color: $black-300;
+    animation: blinkBackground 3s linear infinite;
+    margin-bottom: $margin-medium;
+}
+
+@keyframes blinkBackground {
+    0%,
+    50%,
+    100% {
+        background-color: $black-100;
+    }
+
+    25%,
+    75% {
+        background-color: $black-200;
+    }
+}
+
+.gridCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    place-items: center;
+
+    @include laptopS {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobileM {
+        grid-template-columns: 1fr;
+    }
+}
