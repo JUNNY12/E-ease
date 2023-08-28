@@ -5,7 +5,7 @@ const CardLoader = () => {
         <div className={styles.gridCards}>
             {[...Array(10)].map((_, i) => {
                 return (
-                    <div className={styles.cardLoader}></div>
+                    <div key={i} className={styles.cardLoader}></div>
                 )
             })}
         </div>
