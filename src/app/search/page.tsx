@@ -6,8 +6,6 @@ import { notFound } from "next/navigation"
 
 export default async function Search() {
     const data = await getProducts()
-    
-    if(!data || data.length === 0) return notFound()
 
     return (
         <>

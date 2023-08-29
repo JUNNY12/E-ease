@@ -1,8 +1,10 @@
-import { rootUrl } from "./getProducts"
+import books from "@/data/products"
 
 export default async function getCategories(category: string) {
-        const res = await fetch(`${rootUrl}/api/categories/${category}`)
-        const data = await res.json()
+        const lowercaseCategory = category.toLowerCase();
 
-        return data
+        const matchingProducts = books.filter((product: any) =>
+                product.category.toLowerCase() === lowercaseCategory
+        );
+        return matchingProducts;
 }

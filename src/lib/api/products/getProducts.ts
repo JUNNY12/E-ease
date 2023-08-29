@@ -1,17 +1,20 @@
+import books from "@/data/products";
+import slugify from "slugify";
 
-export const rootUrl = 'https://e-ease.vercel.app'
+export default async function getProducts(){
 
+  const res = books;
 
-export default async function getProducts() {
-  const res = await fetch(`${rootUrl}/api/products`);
-  const data = await res.json();
-
-  return data;
+  return res;
 }
 
-export async function getProduct(id: string) {
-  const res = await fetch(`${rootUrl}/api/products/${id}`);
-  const data = await res.json();
 
-  return data;
+export async function getProduct(slug: string) {
+  const productSlug = slugify(slug, { lower: true });
+
+  const product = books.find((product: any) =>
+    slugify(product.name, { lower: true }) === productSlug
+  );
+ 
+  return product;
 }
