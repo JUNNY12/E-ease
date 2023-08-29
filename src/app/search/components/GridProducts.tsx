@@ -12,7 +12,7 @@ export default function GridProducts({ data }: Props) {
     return (
         <div className={styles.gridProducts}>
             {
-                data?.slice(0, 7)?.map((item: any) => {
+                data.slice(0, 7).map((item: any) => {
                     const productSlug = slugify(item.name, { lower: true })
 
                     return (

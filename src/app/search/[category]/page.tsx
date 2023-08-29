@@ -11,14 +11,14 @@ type Params = {
     }
 }
 
-// export async function generateStaticParams({ params: { category } }: Params) {
-//     const categories = await getCategories(category)
+export async function generateStaticParams({ params: { category } }: Params) {
+    const categories = await getCategories(category)
 
-//     return categories.map((product: any) => ({
-//         category: product.category
-//     })
-//     )
-// }
+    return categories.map((product: any) => ({
+        category: product.category
+    })
+    )
+}
 
 export default async function ProductCategory({ params: { category } }: Params) {
 
