@@ -95,36 +95,6 @@
     }
 }
 
-.notFoundContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-
-    p {
-        font-size: $font-size-large;
-        font-weight: $font-weight-bold;
-        margin-bottom: $margin-medium;
-        min-width: 250px;
-    }
-
-    a {
-        text-decoration: none;
-        color: $white-50;
-        background-color: $seance-500;
-        padding: $padding-small $padding-medium;
-        border-radius: $border-radius-medium;
-        @include transition-ease;
-
-        &:hover {
-            background-color: $seance-600;
-            @include transition-ease;
-        }
-    }
-
-}
-
 .collectionSideBar,
 .sortSideBar {
     @include tabletS {

@@ -1,4 +1,4 @@
-[
+const books = [
     {
         "id": 1,
         "name": "Introduction to Algorithms",
@@ -270,3 +270,5 @@
         "description": "Explores the world of ultra-distance running and the Tarahumara people."
     }
 ]
+
+export default books;

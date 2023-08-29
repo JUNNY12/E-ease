@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import Products from '../../../json/products.json';
+import books from "@/data/products";
 
-export async function GET() {
-    console.log("Products:", Products); 
-    const res = Products;
+export async function GET() { 
+    const res = books;
     return NextResponse.json(res);
 }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Products from '../../../../json/products.json';
+import books from "@/data/products";
 
 type Props = {
     params: {
@@ -10,7 +10,7 @@ type Props = {
 export async function GET(request: Request, { params: { category } }: Props) {
     const lowercaseCategory = category.toLowerCase();
 
-    const matchingProducts = Products.filter((product: any) =>
+    const matchingProducts = books.filter((product: any) =>
         product.category.toLowerCase() === lowercaseCategory
     );
 

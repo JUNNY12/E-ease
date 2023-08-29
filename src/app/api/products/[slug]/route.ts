@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Products from '../../../../json/products.json';
+import books from "@/data/products";
 import slugify from "slugify"; // Import the slugify library
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 export async function GET(request: Request, { params: { slug } }: Props) {
     const productSlug = slugify(slug, { lower: true }); // Convert title to slug
 
-    const product = Products.find((product: any) => 
+    const product = books.find((product: any) => 
         slugify(product.name, { lower: true }) === productSlug // Compare with product slugs
     );
 

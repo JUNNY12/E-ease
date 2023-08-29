@@ -4,6 +4,7 @@ import styles from "./styles/featured.module.scss"
 import { Card } from "@/sharedComponents/card/Card"
 import Image from "next/image"
 
+
 export const images = [
     {
         id: 1,
@@ -53,12 +54,12 @@ export default function ProductGrid() {
                                 <Card className={styles.card}>
                                     <Image
                                         src={image.path}
-                                        priority={true}
                                         fill={true}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                        style={{ objectFit: 'cover' }}
                                         alt="product image"
                                         className={styles.imageStyle}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        style={{ objectFit: 'cover' }}
+
                                     />
                                     <div className={styles.buttonWrap} role='button'>
                                         <span> Lorem ipsum</span>

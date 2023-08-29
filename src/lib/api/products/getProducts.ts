@@ -1,6 +1,6 @@
 
-
 export const rootUrl = 'https://e-ease.vercel.app'
+
 
 export default async function getProducts() {
   const res = await fetch(`${rootUrl}/api/products`);

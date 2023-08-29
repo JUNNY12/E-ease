@@ -100,9 +100,10 @@
 }
 
 .card {
-    width: 100%;
-    height: 290px;
     position: relative;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
 
     @include mobileL {
         height: 250px;
@@ -110,12 +111,6 @@
     }
 }
 
-.cardImage {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: $border-radius-medium;
-}
 
 .productHeader {
     font-size: $font-size-large;
