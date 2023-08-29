@@ -16,7 +16,7 @@ export default function DropDownMenu() {
         return () => {
             document.removeEventListener('click', (e) => handleOutsideClick(e, ref))
         }
-    }, [toggleMenu])
+    }, [handleOutsideClick])
 
     return (
         <div ref={ref} className={styles.menuContainer}>

@@ -21,7 +21,7 @@ export default function CartDropDown() {
         return () => {
             document.removeEventListener('click', (e) => handleOutsideClick(e, ref))
         }
-    }, [toggleCart])
+    }, [handleOutsideClick])
 
     return (
         <div ref={ref} className={styles.cartContainer}>
