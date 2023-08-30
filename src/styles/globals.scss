@@ -79,14 +79,15 @@ body {
     align-items: center;
     justify-content: center;
     height: 70vh;
-    h2{
+
+    h2 {
         font-size: $font-size-large;
         font-weight: $font-weight-bold;
         margin-bottom: $margin-medium;
         min-width: 250px;
     }
 
-    button{
+    button {
         border: none;
         outline: none;
         cursor: pointer;

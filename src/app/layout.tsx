@@ -1,8 +1,7 @@
 import '../styles/globals.scss'
 import type { Metadata } from 'next'
-import Header from '@/sharedComponents/Header/Header'
-import Footer from '@/sharedComponents/Footer/Footer';
 import Provider from '@/provider/Provider';
+import GeneralLayout from '@/sharedComponents/Layout/GeneralLayout';
 
 
 export const metadata: Metadata = {
@@ -19,9 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Provider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <GeneralLayout>
+            {children}
+          </GeneralLayout>
         </Provider>
       </body>
     </html>

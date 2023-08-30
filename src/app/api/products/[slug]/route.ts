@@ -16,7 +16,7 @@ export async function GET(request: Request, { params: { slug } }: Props) {
     );
 
     if (!product) {
-        return NextResponse.json({ message: 'Product not found' });
+        return NextResponse.json({ message: "Product not found" }, { status: 404 });
     }
 
     return NextResponse.json(product);
