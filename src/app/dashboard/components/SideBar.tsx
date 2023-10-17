@@ -39,7 +39,7 @@ export default function SideBar() {
     const { showSideBar,handleCloseSideBar, handleOutsideClick } = useToggleDashboard()
     const width = useWidth()
 
-    const activeRoute = (route: string) => {
+    const ActiveRoute = (route: string) => {
         const pathname = usePathname()
         return pathname === `/dashboard/${route.toLowerCase()}` || (pathname === "/dashboard" && route === "Dashboard")
     }
@@ -60,7 +60,7 @@ export default function SideBar() {
                 {
                     routes.map((route, index) => {
                         const routeLink = index === 0 ? "/dashboard" : `/dashboard/${route.name.toLowerCase()}`
-                        const isActive = activeRoute(route.name)
+                        const isActive = ActiveRoute(route.name)
                         return (
                             <Link title={route.name} href={routeLink} className={isActive ? styles.active : ""} key={index}>
                                 <li>
