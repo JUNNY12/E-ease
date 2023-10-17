@@ -83,7 +83,6 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
                     };
                 }
             } else {
-                // Do nothing if the item does not exist in the cart
                 return state;
             }
         }

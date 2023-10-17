@@ -8,7 +8,7 @@ interface Item {
 interface Cart {
     userId?: string | undefined ;
     items: Item[];
-    subTotal: number | undefined = 0;
+    subTotal: number | undefined;
 }
 
 interface CartState {
@@ -28,5 +28,5 @@ const CartActionTypes = {
 
 interface CartAction {
     type: CartActionTypes;
-    payload?: Item | undefined = {};
+    payload?: Item | undefined ;
 }
