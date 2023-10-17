@@ -1,7 +1,7 @@
 import { User } from "@/types/interfaces";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import { base_URL } from "@/lib/constants/baseUrl";
 
 export const AuthOptions: NextAuthOptions = {
     providers: [
@@ -17,7 +17,7 @@ export const AuthOptions: NextAuthOptions = {
             async authorize(credentials, req) {
                 const { username, password } = credentials as any;
 
-                const url = process.env.NEXT_PUBLIC_EXTERNAL_API_URL + "/auth";
+                const url = base_URL + "/auth";
 
                 const response = await fetch(url, {
                     method: "POST",
