@@ -1,0 +1,112 @@
+@import "../../../../src/styles/mixins";
+@import "../../../../src/styles/variables";
+
+
+.nav {
+    background-color: $white-50;
+    width: 100%;
+    height: 70px;
+    z-index: 7;
+    @include flex;
+    justify-content: space-between;
+    align-items: center;
+    @include container;
+    padding-bottom: $padding-large;
+    padding-top: $padding-large;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.user {
+    font-size: $font-size-2-5;
+    cursor: pointer;
+    position: relative;
+
+    span {
+        display: inline-block;
+        position: absolute;
+        bottom: -6px;
+        right: 25%;
+        font-size: 1rem;
+    }
+}
+
+.rightCol {
+    display: flex;
+    align-items: center;
+}
+
+.admin{
+    margin-right: 1rem;
+    color: $black-400;
+    font-weight: $font-weight-bold;
+}
+
+.menuIcon {
+    background-color: $white-100;
+    border: $border-width-small solid $black-400;
+    border-radius: $border-radius-small;
+    font-size: 1.5rem;
+    height: 35px;
+    width: 35px;
+    margin-left: 3rem;
+    @include flex-center;
+    color: $black-950;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: $padding-small;
+    display: none;
+    @include transition-ease;
+
+    &:hover {
+        transform: scale(1.05);
+        @include transition-ease;
+    }
+
+    @include laptopS{
+        display: flex;
+    }
+}
+
+.dropDownWrap {
+    position: absolute;
+    right: 5px;
+    top: 80px;
+}
+
+.dropDown {
+    background-color: $white-50;
+    border-radius: $border-radius-small;
+    z-index: $z-index-1;
+    padding: $padding-medium;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: max-content;
+    height: fit-content;
+
+    p{
+        margin-bottom: $margin-small;
+        font-weight: $font-weight-bold;
+        color: $black-600;
+    }
+}
+
+.button {
+    background-color: $seance-600;
+    color: $white-50;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    position: relative;
+    width: 150px;
+    @include transition-ease;
+    border: none;
+    outline: none;
+    font-weight: $font-weight-bold;
+
+    &:hover {
+        background-color: $seance-500;
+        @include transition-ease;
+    }
+}

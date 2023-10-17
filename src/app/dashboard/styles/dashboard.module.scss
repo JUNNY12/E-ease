@@ -1,0 +1,157 @@
+@import "../../../../src/styles/mixins";
+@import "../../../../src/styles/variables";
+
+.card {
+    background-color: $white-50;
+    height: 100px;
+    width: 100%;
+    border-radius: $border-radius-medium;
+    box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+        -webkit-box-shadow: 5px 3px 10px 2pxrgba(58, 57, 57, 0.55);
+        -moz-box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+    padding: $padding-medium;
+    @include transition-ease;
+    cursor: pointer;
+    color: $black-600;
+
+    &:hover {
+        transform: scale(1.02);
+        @include transition-ease;
+    }
+
+    &:nth-child(2) {
+        background-color: $seance-200;
+
+    }
+
+    &:nth-child(1) {
+        background-color: #FDF9E5;
+
+    }
+
+    &:nth-child(3) {
+        background-color: #E5FDF9;
+
+    }
+
+    &:nth-child(4) {
+        background-color: #DAE3F7;
+
+    }
+
+    &:nth-child(5) {
+        background-color: #dbeaa3;
+
+    }
+
+    .cardTitle {
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-medium;
+    }
+
+    p {
+        font-size: $font-size-1-75;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 20px;
+
+    @include mobileL {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobileM {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.topProduct {
+    margin-top: $margin-xx-large;
+
+    h2 {
+        font-size: $font-size-huge;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-medium;
+        color: $black-600;
+    }
+
+    .flexHeader {
+        display: flex;
+        color: $black-600;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-large;
+        font-size: $font-size-large;
+        padding: $padding-small;
+        background-color: $white-100;
+        text-align: center;
+    }
+
+    .col_1,
+    .col_2,
+    .col_3,
+    .col_4,
+    .col_5 {
+        margin-right: $margin-small;
+       
+    }
+
+    .col_1 {
+        width: 10%;
+    }
+
+    .col_2 {
+        width: 10%;
+    }
+
+    .col_3 {
+        width: 50%;
+    }
+
+    .col_4 {
+        width: 15%;
+    }
+
+    .col_5 {
+        width: 15%;
+    }
+}
+
+.wrapper{
+    width:100%;
+    overflow: auto;
+        box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+            -webkit-box-shadow: 5px 3px 10px 2pxrgba(58, 57, 57, 0.55);
+            -moz-box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+}
+
+.flexWrapper {
+    background-color: $white-50;
+    padding: $padding-medium;
+    border-radius: $border-radius-small;
+    min-width: 800px;
+    overflow: auto;
+}
+
+.flexProduct {
+    display: flex;
+    align-items: center;
+    color: $black-600;
+    font-weight: $font-weight-bold;
+    margin-bottom: $margin-medium;
+    font-size: $font-size-small;
+    text-align: center;
+    padding: $padding-small;
+    cursor: pointer;
+    @include transition-ease;
+    
+        &:hover {
+            background-color: $white-100;
+            @include transition-ease;
+        }
+}

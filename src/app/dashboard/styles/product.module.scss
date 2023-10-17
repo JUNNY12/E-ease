@@ -1,0 +1,212 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.flexHeader {
+    display: flex;
+    color: $black-600;
+    font-weight: $font-weight-bold;
+    margin-bottom: $margin-large;
+    font-size: $font-size-large;
+    padding: $padding-small;
+    background-color: $white-100;
+}
+
+.col_1,
+.col_2,
+.col_3,
+.col_4,
+.col_5,
+.col_6,
+.col_7 {
+    margin-right: $margin-small;
+
+}
+
+.col_1 {
+    width: 5%;
+}
+
+.col_2 {
+    width: 10%;
+}
+
+.col_3 {
+    width: 30%;
+}
+
+.col_4 {
+    width: 10%;
+}
+
+.col_5 {
+    width: 15%;
+}
+
+.col_6 {
+    width: 10%;
+}
+
+.col_7 {
+    width: 20%;
+}
+
+.wrapper {
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+    -webkit-box-shadow: 5px 3px 10px 2pxrgba(58, 57, 57, 0.55);
+    -moz-box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+}
+
+.flexWrapper {
+    background-color: $white-50;
+    padding: $padding-medium;
+    border-radius: $border-radius-small;
+    min-width: 800px;
+    overflow: auto;
+
+}
+
+.flexProduct {
+    display: flex;
+    align-items: center;
+    color: $black-600;
+    font-weight: $font-weight-bold;
+    margin-bottom: $margin-medium;
+    font-size: $font-size-small;
+    padding: $padding-small;
+    cursor: pointer;
+    @include transition-ease;
+
+    &:hover {
+        background-color: $white-100;
+        @include transition-ease;
+    }
+}
+
+.searchInput {
+    width: 100%;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    border: 1px solid $black-100;
+    margin-bottom: $margin-medium;
+    font-size: $font-size-small;
+    height: 45px;
+    @include transition-ease;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $seance-600;
+        @include transition-ease;
+    }
+
+    &::placeholder {
+        color: $black-600;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.searchWrapper {
+    margin-bottom: $margin-medium;
+    @include flex;
+    justify-content: space-between;
+
+    button {
+        outline: none;
+        border: none;
+        width: 200px;
+        height: 45px;
+        padding: $padding-small;
+        margin-left: $margin-medium;
+        color: $white-100;
+        font-weight: $font-weight-bold;
+        cursor: pointer;
+        border-radius: $border-radius-small;
+        font-size: $font-size-small;
+        background-color: $seance-500;
+        @include transition-ease;
+
+        &:hover {
+            outline: none;
+            background-color: $seance-600;
+            @include transition-ease;
+        }
+
+    }
+}
+
+.actions {
+    @include flex;
+    align-items: center;
+    justify-content: center;
+
+    .action {
+        margin-right: $margin-small;
+        width: 40px;
+        height: 40px;
+        border-radius: $border-radius-small;
+        border: $border-width-small solid $black-100;
+        @include flex-center;
+        cursor: pointer;
+        @include transition-ease;
+        font-size: $font-size-large;
+        color: $white-100;
+
+        &:nth-child(1) {
+            background-color: $seance-500;
+
+            a {
+                color: $white-100;
+                text-decoration: none;
+            }
+        }
+
+        &:nth-child(2) {
+            background-color: rgb(70, 144, 70);
+
+            a {
+                color: $white-100;
+                text-decoration: none;
+            }
+        }
+
+        &:nth-child(3) {
+            background-color: rgb(227, 49, 49);
+        }
+
+
+
+        &:hover {
+            transform: scale(1.1);
+            @include transition-ease;
+        }
+    }
+}
+
+.btnWrap {
+    @include flex;
+    justify-content: flex-end;
+    margin-bottom: $margin-large;
+}
+
+.addBtn {
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 40px;
+    color: $white-100;
+    font-weight: $font-weight-bold;
+    cursor: pointer;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    font-size: $font-size-small;
+    background-color: $seance-500;
+    @include transition-ease;
+
+    &:hover {
+        outline: none;
+        background-color: $seance-600;
+        @include transition-ease;
+    }
+}

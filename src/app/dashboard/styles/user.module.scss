@@ -1,0 +1,357 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.flexHeader {
+    display: flex;
+    color: $black-600;
+    font-weight: $font-weight-bold;
+    margin-bottom: $margin-large;
+    font-size: $font-size-medium;
+    padding: $padding-small;
+    background-color: $white-100;
+}
+
+.col_1,
+.col_2,
+.col_3,
+.col_4,
+.col_5,
+.col_6,
+.col_7 {
+    margin-right: $margin-small;
+
+}
+
+.col_1 {
+    width: 5%;
+}
+
+.col_2 {
+    width: 25%;
+}
+
+.col_3 {
+    width: 20%;
+}
+
+.col_4 {
+    width: 15%;
+}
+
+.col_5 {
+    width: 10%;
+}
+
+.col_6 {
+    width: 15%;
+}
+
+.col_7 {
+    width: 10%;
+}
+
+.wrapper {
+    background-color: $white-50;
+    padding: $padding-medium;
+    border-radius: $border-radius-small;
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+    -webkit-box-shadow: 5px 3px 10px 2pxrgba(58, 57, 57, 0.55);
+    -moz-box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+    position: relative;
+}
+
+.flexWrapper {
+    min-width: 850px;
+    overflow: auto;
+
+}
+
+.userContainer {
+    position: relative;
+}
+
+.flexUser {
+    display: flex;
+    align-items: center;
+    color: $black-600;
+    font-weight: $font-weight-bold;
+    margin-bottom: $margin-medium;
+    font-size: $font-size-small;
+    padding: $padding-small;
+    cursor: text;
+    @include transition-ease;
+
+    &:hover {
+        background-color: $white-100;
+        @include transition-ease;
+    }
+}
+
+.searchHeader {
+    @include flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input {
+    min-width: 600px;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    border: 1px solid $black-100;
+    margin-bottom: $margin-medium;
+    font-size: $font-size-small;
+    height: 40px;
+    @include transition-ease;
+
+    &:focus {
+        outline: none;
+        border: 1px solid $seance-600;
+        @include transition-ease;
+    }
+
+    &::placeholder {
+        color: $black-600;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.button {
+    width: 200px;
+    font-weight: $font-weight-bold;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    border: 1px solid $black-100;
+    margin-bottom: $margin-medium;
+    font-size: $font-size-small;
+    height: 40px;
+    cursor: pointer;
+    background-color: $seance-500;
+    color: $white-50;
+    @include transition-ease;
+
+    &:hover {
+        background-color: $seance-600;
+        @include transition-ease;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+
+    button {
+        background: transparent;
+        border: none;
+        outline: none;
+        margin-right: $margin-small;
+        font-size: $font-size-large;
+        cursor: pointer;
+    }
+}
+
+.roleWrap {
+    @include flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.roleBtn {
+    width: 60px;
+    border-radius: 18px;
+    height: 30px;
+    background-color: $white-200;
+    position: relative;
+    padding: $padding-small;
+    box-shadow: 5px 10px 5px 0px rgba(33, 32, 32, 0.75) inset;
+    -webkit-box-shadow: 5px 10px 5px 0px rgba(33, 32, 32, 0.75) inset;
+    -moz-box-shadow: 5px 10px 5px 0px rgba(33, 32, 32, 0.75) inset;
+
+    .ball {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: $seance-500;
+        position: absolute;
+        left: 2px;
+        top: 1.5px;
+    }
+
+}
+
+.userMenu {
+    height: fit-content;
+    background-color: $white-50;
+    border-radius: $border-radius-small;
+    width: fit-content;
+    padding: $padding-medium;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+    -webkit-box-shadow: 5px 3px 10px 2pxrgba(58, 57, 57, 0.55);
+    -moz-box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+
+    ul {
+        list-style: none;
+
+        li {
+            width: 200px;
+            margin-bottom: $margin-medium;
+            color: $black-600;
+            padding: $padding-small;
+            border-radius: $border-radius-small;
+            cursor: pointer;
+            font-weight: $font-weight-bold;
+            @include transition-ease;
+
+            &:hover {
+                background-color: $seance-500;
+                @include transition-ease;
+                color: $white-50;
+            }
+        }
+    }
+
+    .closeBtn {
+        position: absolute;
+        top: 5px;
+        width: 30px;
+        height: 30px;
+        right: 5px;
+        cursor: pointer;
+        font-size: $font-size-large;
+        color: $black-600;
+        @include transition-ease;
+
+        &:hover {
+            transform: scale(1.1);
+            @include transition-ease;
+        }
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.userForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: $padding-medium;
+    background-color: $white-50;
+    border-radius: $border-radius-small;
+    width: min-content;
+    overflow: auto;
+    text-align: center;
+    box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+    -webkit-box-shadow: 5px 3px 10px 2pxrgba(58, 57, 57, 0.55);
+    -moz-box-shadow: 5px 3px 10px 2px rgba(58, 57, 57, 0.55);
+
+    h2 {
+        margin-bottom: $margin-medium;
+        color: $black-600;
+    }
+
+    .closeBtn {
+        position: absolute;
+        top: 5px;
+        width: 30px;
+        height: 30px;
+        right: 5px;
+        cursor: pointer;
+        font-size: $font-size-large;
+        color: $black-600;
+        @include transition-ease;
+
+        &:hover {
+            transform: scale(1.1);
+            @include transition-ease;
+        }
+    }
+
+    form {
+        @include flex;
+        flex-direction: column;
+
+        .input {
+            @extend .input;
+            min-width: 300px;
+            background-color: $white-100;
+
+            @include mobileL {
+                min-width: 280px;
+            }
+        }
+
+        .button {
+            @extend .button;
+            min-width: 300px;
+
+            @include mobileL {
+                min-width: 280px;
+            }
+        }
+    }
+}
+
+.detailWrap {
+    @extend .userForm;
+
+    .closeBtn{
+        @extend .closeBtn;
+    }
+
+    .userIcon {
+        font-size: 6rem;
+        margin-bottom: $margin-small;
+    }
+
+    h1{
+        font-size: $font-size-2;
+        margin-bottom: $margin-medium;
+    }
+
+    ul {
+        list-style: none;
+        width: 300px;
+
+        li{
+            display: flex;
+            margin-bottom: $margin-medium;
+
+            span{
+                display: block;
+
+                &:first-child{
+                    color: $black-900;
+                    width: 100px;
+                    font-weight: $font-weight-bold;
+                    text-align: start;
+                }
+                &:last-child{
+                    color: $black-600;
+                }
+            }
+        }
+
+        @include mobileM {
+            width: 280px;
+        }
+    }
+}

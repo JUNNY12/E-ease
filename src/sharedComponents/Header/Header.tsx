@@ -7,12 +7,23 @@ import useHandleToggle from "@/hooks/toggle/useToggleHeader"
 import { GrMenu } from "react-icons/gr"
 import Logo from "../Logo/Logo"
 import DropDownMenu from "./DropDownMenu"
+import DropDownAccount from "./DropDownAccount"
 import Search from "../Search/Search"
-import { FaSearch } from "react-icons/fa"
+import { FaSearch, FaUser } from "react-icons/fa"
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import { useCart } from "@/hooks/cart/useCart"
 
 
 export default function Header() {
-    const { toggleCart, handleOpenCart, toggleMenu, handleOpenMenu } = useHandleToggle()
+    const {
+        toggleCart,
+        handleOpenCart,
+        toggleMenu,
+        handleOpenMenu,
+        handleToggleAccount,
+        toggleAccount
+    } = useHandleToggle()
+    const {state:{cart}} = useCart()
 
     return (
         <header className={styles.header} >
@@ -25,7 +36,7 @@ export default function Header() {
             </div>
 
             <nav className={styles.navWrapper}>
-                
+
                 <div role="button" onClick={handleOpenMenu} className={styles.menuIcon}>
                     <GrMenu />
                 </div>
@@ -54,13 +65,27 @@ export default function Header() {
                     <FaSearch className={styles.searchIcon} />
                 </div>
 
+                <div className={styles.account} role="button" onClick={handleToggleAccount}>
+                    <span> <FaUser /> </span>
+                    <span> Account </span>
+                    <span>{
+                        toggleAccount ? <MdKeyboardArrowUp className={styles.arrowDown} /> : <MdKeyboardArrowDown className={styles.arrowDown} />
+                    } </span>
+                </div>
+
+                <div className={styles.dropDownAccountWrapper}>
+                    {toggleAccount && <DropDownAccount />}
+                </div>
+
                 <div
                     onClick={handleOpenCart}
                     className={styles.cartIcon}>
                     <GrCart />
-                </div>
+                    {
+                        cart?.items?.length !== 0 && <span className={styles.inCart}></span>
+                    }
+                </ div>
             </nav>
-
         </header>
     )
 }

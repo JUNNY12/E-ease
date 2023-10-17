@@ -2,61 +2,29 @@
 import styles from '../styles/product.module.scss';
 import { Input } from "@/sharedComponents/Input/Input";
 import { Typography } from "@/sharedComponents/Typography/Typography";
-import { ChangeEvent, useState } from "react";
 import { SelectRating } from "@/sharedComponents/Rating/SelectRating";
 import { Button } from "@/sharedComponents/Button/Button";
+import { useReview } from '@/hooks/product/useReview';
+import { BeatLoader } from 'react-spinners';
 
-type formData = {
-    name: string,
-    email: string,
-    message: string,
-    rating: number
+type Props = {
+    productId: string | undefined
 }
 
-export default function AddReviewForm() {
-
-    const [formData, setFormData] = useState<formData>({
-        name: '',
-        email: '',
-        message: '',
-        rating: 0
-    })
-
-    const canSubmit = formData.name !== '' && formData.email !== '' && formData.message !== '' && formData.rating !== 0;
-
-    const handleRateClick = (rating: number) => {
-        setFormData({
-            ...formData,
-            rating: rating
-        })
-    }
-
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        })
-    }
-
-
-    const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(formData)
-        
-        setFormData({
-            name: '',
-            email: '',
-            message: '',
-            rating: 0
-        })
-    }
+export default function AddReviewForm({ productId }: Props) {
+    const { formData,
+        handleInputChange,
+        handleRateClick,
+        canSubmit,
+        submitReview,
+        loading
+    } = useReview(productId)
 
     return (
         <div>
             <Typography variant={3} className={styles.addReviewHeader}>Add a review</Typography>
 
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" onSubmit={submitReview}>
 
                 <div>
                     <Input placeholder='name' className={styles.input} name='name' value={formData.name} onChange={handleInputChange} type="text" />
@@ -67,7 +35,7 @@ export default function AddReviewForm() {
                 </div>
 
                 <div>
-                    <textarea className={styles.textarea} name="message" value={formData.message} onChange={handleInputChange} placeholder="Add your review" />
+                    <textarea className={styles.textarea} name="comment" value={formData.comment} onChange={handleInputChange} placeholder="Add your review" />
                 </div>
 
                 <div className={styles.inputWrapper}>
@@ -78,7 +46,10 @@ export default function AddReviewForm() {
                     {canSubmit && (
                         <Button className={styles.addReviewButton}>
                             <span>
-                                Add review
+                                {
+                                    loading ? (<BeatLoader size={10} color='white' />)
+                                        : ('Submit review')
+                                }
                             </span>
                         </Button>
                     )}

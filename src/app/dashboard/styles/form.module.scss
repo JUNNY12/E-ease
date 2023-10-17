@@ -1,0 +1,125 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.container {
+    @include container;
+    background-color: $white-50;
+
+    h1 {
+        color: $black-600;
+        margin-bottom: $margin-large;
+    }
+}
+
+.form {
+
+    .input {
+        border: none;
+        background-color: $black-200;
+        outline: none;
+        width: 100%;
+        padding: $padding-small;
+        margin-bottom: $margin-large;
+        height: 45px;
+        border-radius: $border-radius-small;
+        @include transition-ease;
+
+        &::placeholder {
+            font-size: $font-size-large;
+        }
+
+        &:focus {
+            border: $border-width-small solid $seance-500;
+            @include transition-ease;
+        }
+    }
+
+    .textarea {
+        @extend .input;
+        height: 120px;
+    }
+
+    .select {
+        @extend .input;
+        font-size: $font-size-medium;
+
+        option {
+            background-color: $white-50;
+            color: $black-600;
+            font-weight: $font-weight-medium;
+        }
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+
+        @include mobileM {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .button {
+        @include flex-center;
+        position: relative;
+        cursor: pointer;
+        font-size: $font-size-large;
+        width: 100%;
+        padding: $padding-medium;
+        border-radius: 28px;
+        background-color: $seance-600;
+        outline: none;
+        border: none;
+        color: $white-50;
+        @include transition-ease;
+
+        &:hover {
+            background-color: $seance-500;
+            @include transition-ease;
+        }
+    }
+
+    .disabled{
+        @extend .button;
+        background-color: $seance-200;
+        cursor: not-allowed;
+        &:hover{
+            background-color: $seance-300;
+        }
+    }
+
+    .imageInput{
+        display: none;
+    }
+
+    .imageLabel{
+        background-color: $black-200;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding:$padding-medium;
+        align-items: center;
+        flex-direction: column;
+        font-weight: $font-weight-bold;
+        color: $black-600;
+        height: 200px;
+        width: 100%;
+        border-radius: $border-radius-small;
+        margin-bottom: $margin-large;
+        border: $border-width-small dashed $seance-500;
+
+        span{
+            &:nth-child(1){
+                font-size: 3rem;
+                margin-bottom: $margin-medium;
+            }
+        }
+    }
+
+    .fileName{
+        font-size: $font-size-medium;
+        font-weight: $font-weight-medium;
+        margin-top: $margin-medium;
+    }
+}

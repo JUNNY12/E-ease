@@ -1,7 +1,10 @@
 import '../styles/globals.scss'
+import 'react-toastify/dist/ReactToastify.css';
 import type { Metadata } from 'next'
 import Provider from '@/provider/Provider';
 import GeneralLayout from '@/sharedComponents/Layout/GeneralLayout';
+import ToastProvider from '@/provider/ToastProvider';
+import { ReactQueryProvider } from '@/provider/ReactQueryProvider';
 
 
 export const metadata: Metadata = {
@@ -11,17 +14,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  session
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  session: any
 }) {
   return (
     <html lang="en">
       <body>
-        <Provider>
-          <GeneralLayout>
-            {children}
-          </GeneralLayout>
-        </Provider>
+        <ReactQueryProvider>
+          <Provider session={session}>
+            <ToastProvider>
+              <GeneralLayout>
+                {children}
+              </GeneralLayout>
+            </ToastProvider>
+          </Provider>
+        </ReactQueryProvider>
       </body>
     </html>
   )

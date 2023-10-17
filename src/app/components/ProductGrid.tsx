@@ -3,75 +3,56 @@ import { Typography } from "@/sharedComponents/Typography/Typography"
 import styles from "./styles/featured.module.scss"
 import { Card } from "@/sharedComponents/card/Card"
 import Image from "next/image"
-
-
-export const images = [
-    {
-        id: 1,
-        path: '/images/image 1.jpg'
-    },
-    {
-        id: 2,
-        path: '/images/image2.jpg'
-    },
-    {
-        id: 3,
-        path: '/images/image3.jpg'
-    },
-    {
-        id: 4,
-        path: '/images/image 1.jpg'
-    },
-    {
-        id: 5,
-        path: '/images/image3.jpg'
-    },
-    {
-        id: 6,
-        path: '/images/image2.jpg'
-    },
-    {
-        id: 7,
-        path: '/images/image 1.jpg'
-    },
-    {
-        id: 8,
-        path: '/images/image2.jpg'
-    },
-]
-
+import { useQuery } from "@tanstack/react-query"
+import { getTopProducts } from "@/lib/api/products/getTopProducts"
+import { formatCurrency } from "@/lib/utils/formatCurrency"
+import CardLoader from "@/sharedComponents/card/CardLoader"
+import Link from "next/link"
 
 export default function ProductGrid() {
+    const { data, isLoading, error } = useQuery({
+        queryKey: ['products'],
+        queryFn: () => getTopProducts()
+    })
 
     return (
         <section className={styles.productsGrid}>
             <Typography variant={2} className={styles.productHeader}>Popular Books</Typography>
             <div className={styles.productsGridContainer}>
                 {
-                    images.map((image) => {
+                    isLoading && [...Array(8)].map((_, i) => {
                         return (
-                            <div key={image.id}>
+                            <div key={i}>
+                                <CardLoader />
+                            </div>
+                        )
+                    })
+                }
+                {
+                    data?.map((product: Product) => {
+                        return (
+                            <div key={product._id}>
                                 <Card className={styles.card}>
                                     <Image
-                                        src={image.path}
+                                        src={product.image.url ?? ''}
                                         fill={true}
                                         alt="product image"
                                         className={styles.imageStyle}
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         style={{ objectFit: 'cover' }}
-
                                     />
+                                    <Link href={`/product/${product.slug}`}>
                                     <div className={styles.buttonWrap} role='button'>
-                                        <span> Lorem ipsum</span>
-                                        <span role='button' className={styles.priceButton}>$20.00</span>
+                                        <span>{`${product?.title?.substring(0, 10) + '...'}`}</span>
+                                        <span role='button' className={styles.priceButton}>{formatCurrency(product.price ?? 0)}</span>
                                     </div>
+                                    </Link>
                                 </Card>
                             </div>
                         )
                     })
                 }
             </div>
-
         </section>
     )
 }

@@ -5,6 +5,7 @@ import useHandleToggle from '@/hooks/toggle/useToggleHeader'
 import { useEffect, useRef } from 'react'
 import Search from '../Search/Search'
 import Link from 'next/link'
+import { FaUser } from 'react-icons/fa'
 
 export default function DropDownMenu() {
     const { handleOutsideClick, handleCloseMenu, toggleMenu } = useHandleToggle()
@@ -41,6 +42,21 @@ export default function DropDownMenu() {
                             <Link href="/search/Literature">Literatures</Link>
                         </li>
                     </ul>
+                </div>
+
+                <div className={styles.myAccount}>
+                    <div className={styles.myAccountLink}>
+                        <Link href={`#`}>
+                            <span><FaUser /></span>
+                            <span>My Account</span>
+                        </Link>
+                    </div>
+                </div>
+
+                <div className={styles.bottomSignIn}>
+                    <Link href="/auth/login">
+                        <Button className={styles.signIn}>SIGN IN</Button>
+                    </Link>
                 </div>
             </div>
         </div>

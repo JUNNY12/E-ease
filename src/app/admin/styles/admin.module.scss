@@ -1,0 +1,111 @@
+@import "../../../../src/styles/mixins";
+@import "../../../../src/styles/variables";
+
+.formWrapper{
+    @include container;
+    @include flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+.formContainer {
+    @include flex-column;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+        margin-bottom: $margin-large;
+
+        @include mobileL {
+            font-size: $font-size-huge;
+        }
+    }
+
+    p {
+        text-align: center;
+    }
+
+    a {
+        text-align: center;
+        color: $black-950;
+        font-size: $font-size-medium;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-large;
+        @include transition-ease;
+
+        &:hover {
+            color: $seance-500;
+            @include transition-ease;
+        }
+    }
+}
+
+.input {
+    @include input;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 50px;
+    margin-bottom: $margin-large;
+    border-radius: $border-radius-small;
+    text-indent: 10px;
+    background-color: $white-50;
+    @include transition-ease;
+
+    &:focus {
+        border: $border-width-small solid $seance-500;
+        @include transition-ease;
+    }
+
+    &::placeholder {
+        font-size: $font-size-large;
+    }
+}
+
+.button {
+    width: 100%;
+    height: 50px;
+    margin-bottom: $margin-large;
+    border-radius: $border-radius-small;
+    font-size: $font-size-medium;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    outline: none;
+    background-color: $seance-500;
+    color: $white-50;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 0px $seance-200;
+
+    @include transition-ease;
+
+    &:hover {
+        background-color: $seance-600;
+        @include transition-ease;
+    }
+}
+
+
+.disabled {
+    @extend .button;
+    background-color: $seance-300;
+    cursor: not-allowed;
+
+    &:hover {
+        background-color: $seance-400;
+    }
+}
+
+.childrenWrapper{
+    margin-left: 250px;
+    @include container;
+    padding-top: 7rem;
+    min-width: none;
+
+    @include laptopS{
+        margin-left: 0;
+    } 
+    @include tabletL{
+        padding-top: 8rem;
+    }
+}

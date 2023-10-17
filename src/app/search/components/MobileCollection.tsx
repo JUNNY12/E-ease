@@ -6,7 +6,7 @@ import { Button } from "@/sharedComponents/Button/Button";
 import styles from "../styles/search.module.scss";
 import { BiDownArrow, BiUpArrow } from 'react-icons/bi';
 
-const collections = [
+export const collections = [
     'Programming',
     'Business',
     'Marketing',

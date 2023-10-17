@@ -1,13 +1,35 @@
-import {useContext} from 'react'
-import { HandleToggleContextType } from '@/context/toggle/HandleToggleHeaderContext'
-import { HandleToggleContext } from '@/context/toggle/HandleToggleHeaderContext'
+import { useContext } from 'react'
+import { HandleToggleContext } from '@/context/toggle/HandleToggleContext'
 
-export default function useHandleToggle(): HandleToggleContextType {
+export default function useHandleToggle() {
     const context = useContext(HandleToggleContext)
 
     if (!context) {
         throw new Error('useHandleToggle must be used within a HandleToggleProvider')
-    }   
+    }
 
-    return context
+    const {
+        toggleCart,
+        handleOpenCart,
+        handleCloseCart,
+        handleOutsideClick,
+        toggleMenu,
+        handleCloseMenu,
+        handleOpenMenu,
+        toggleAccount,
+        handleToggleAccount
+    } = context
+
+    return {
+        toggleCart,
+        handleOpenCart,
+        handleCloseCart,
+        handleOutsideClick,
+        toggleMenu,
+        handleCloseMenu,
+        handleOpenMenu,
+        toggleAccount,
+        handleToggleAccount
+    }
+
 }

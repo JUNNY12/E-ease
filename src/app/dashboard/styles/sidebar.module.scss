@@ -1,0 +1,74 @@
+@import "../../../../src/styles/mixins";
+@import "../../../../src/styles/variables";
+
+.sideBar {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $white-50;
+    width: 250px;
+    padding: $padding-large;
+    padding-top: 7rem;
+    transform: translateX(0);
+    @include transition-ease;
+    z-index:6;
+
+    ul {
+        list-style: none;
+
+        li {
+            display: flex;
+            font-size: $font-size-large;
+            padding: $padding-small;
+        }
+
+        a {
+            text-decoration: none;
+            color: $black-600;
+            font-size: $font-size-medium;
+            font-weight: $font-weight-bold;
+            display: flex;
+            flex-direction: column;
+            width: 150px;
+            margin-bottom: $margin-x-large;
+            border-radius: $border-radius-small;
+            @include transition-ease;
+
+            &:hover {
+                background-color: $seance-500;
+                color: $white-50;
+                @include transition-ease;
+            }
+        }
+    }
+    
+
+}
+
+.hideSideBar{
+    @extend .sideBar;
+    transform: translateX(-100%);
+
+}
+
+.active {
+    background-color: $seance-500;
+    border-radius: $border-radius-small;
+    color: $white-50;
+    @include transition-ease;
+
+    .activeLink {
+        color: $white-50;
+        @include transition-ease;
+    }
+
+    .icon {
+        color: $white-50;
+        @include transition-ease;
+    }
+}
+
+.icon {
+    margin-right: $margin-small;
+}

@@ -1,35 +1,19 @@
-import styles from '../styles/product.module.scss'
+"use client"
+import styles from './product.module.scss'
 import { Typography } from "@/sharedComponents/Typography/Typography"
 import { Rating } from "@/sharedComponents/Rating/Rate"
 import { formatDate } from '@/lib/utils/formatDate'
-
-const reviews = [
-    {
-        id: 1,
-        date: '2011-10-10T14:48:00',
-        name: 'John Doe',
-        rating: 5,
-        review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
-    },
-    {
-        id: 2,
-        name: 'John Doe',
-        date: '2011-10-10T14:48:00',
-        rating: 5,
-        review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
-    },
-    {
-        id: 3,
-        name: 'John Doe',
-        date: '2011-10-10T14:48:00',
-        rating: 5,
-        review: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
-    }
-]
+import { useReview } from '@/hooks/product/useReview'
+import { ReviewLoader } from '../Skeleton Loader/ReviewLoader'
 
 
+type reviewProps = {
+    productId: string | undefined
+}
 
-export default function Review() {
+export default function Review({ productId }: reviewProps) {
+    const { data, isLoading } = useReview(productId)
+
     return (
         <div>
             <Typography variant={2} className={styles.reviewHeader}>
@@ -37,9 +21,9 @@ export default function Review() {
             </Typography>
 
             <article>
-                {reviews.map(review => (
-                    <div key={review.id} className={styles.review}>
-                        <div>
+                {data?.reviews?.length > 0 ? (
+                    data?.reviews?.map((review: Review) => (
+                        <div key={review._id} className={styles.review}>
                             <div className={styles.topReviewHeader}>
                                 <div>
                                     <Typography variant={3} className={styles.reviewer}>
@@ -47,11 +31,11 @@ export default function Review() {
                                     </Typography>
                                 </div>
                                 <div className={styles.reviewDate}>
-                                    {formatDate(review.date)}
+                                    {formatDate(review.createdAt)}
                                 </div>
                             </div>
                             <p>
-                                {review.review}
+                                {review.comment}
                             </p>
                             <div>
                                 <span>
@@ -59,8 +43,24 @@ export default function Review() {
                                 </span>
                             </div>
                         </div>
+                    ))
+                ) : (
+                    <div className={styles.noReview}>
+                        {
+                            !isLoading && <span> There are no reviews.</span>
+                        }
                     </div>
-                ))}
+                )}
+
+                {
+                    isLoading && [...Array(5)].map((_, i) => {
+                        return (
+                            <div key={i}>
+                                <ReviewLoader />
+                            </div>
+                        )
+                    })
+                }
             </article>
         </div>
     )

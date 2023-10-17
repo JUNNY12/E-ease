@@ -1,0 +1,75 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.loader {
+    width: 100%;
+    height: 40px;
+    margin-right: $margin-small;
+    background-color: $white-400;
+    border-radius: 5px;
+    animation: pulse 1s infinite;
+
+    &:nth-child(1) {
+        width: 5%;
+    }
+
+    &:nth-child(2) {
+        width: 10%;
+    }
+
+    &:nth-child(3) {
+        width: 30%;
+    }
+
+    &:nth-child(4) {
+        width: 10%;
+    }
+
+    &:nth-child(5) {
+        width: 15%;
+    }
+
+    &:nth-child(6) {
+        width: 10%;
+    }
+
+    &:nth-child(7) {
+        width: 6.33%;
+    }
+    &:nth-child(8) {
+        width: 6.33%;
+    }
+    &:nth-child(9) {
+        width: 6.33%;
+    }
+}
+
+.loaderContainer {
+    @include flex;
+    align-items: center;
+    margin-bottom: $margin-medium;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.reviewLoader{
+    max-width: 600px;
+    height: 100px;
+    margin-right: $margin-small;
+    background-color: $white-400;
+    border-radius: 5px;
+    animation: pulse 1s infinite;
+    margin-bottom: $margin-medium;
+}

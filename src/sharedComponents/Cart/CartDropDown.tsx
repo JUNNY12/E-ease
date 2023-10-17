@@ -5,11 +5,14 @@ import styles from './cart.module.scss'
 import useHandleToggle from '@/hooks/toggle/useToggleHeader'
 import { useEffect, useRef } from 'react'
 import EmptyCart from './EmptyCart'
+import { useCart } from '@/hooks/cart/useCart'
+import { CartItem } from './cartItem'
 
 
 
 export default function CartDropDown() {
     const { handleCloseCart, handleOutsideClick, toggleCart } = useHandleToggle()
+    const { state: { cart } } = useCart()
     const ref = useRef<HTMLDivElement>(null)
 
     if (toggleCart) {
@@ -33,7 +36,15 @@ export default function CartDropDown() {
             </div>
 
             <div>
-                <EmptyCart />
+                {
+                    cart?.items?.length == 0 && <EmptyCart />
+                }
+            </div>
+
+            <div className={styles.cartItemWrapper}>
+                {
+                    cart?.items?.length !== 0 && <CartItem />
+                }
             </div>
         </div>
     )

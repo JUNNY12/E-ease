@@ -31,6 +31,7 @@ export default function Featured() {
             priority={true}
             fill={true}
             alt={'featured image'}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={styles.imageStyle}
           />
           <div className={styles.buttonWrap} role='button'>

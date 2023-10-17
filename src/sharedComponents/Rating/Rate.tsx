@@ -15,7 +15,7 @@ export const Rating = ({ rating }:rating) => {
                                 <AiFillStar />
                             </span>
                         ) : (
-                            <span>
+                            <span className='uncolored'>
                                 <AiOutlineStar />
                             </span>
                         )}

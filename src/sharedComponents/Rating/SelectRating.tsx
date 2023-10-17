@@ -4,6 +4,7 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 type Props = {
     onRateClick?: (index: number) => void;
+    
 }
 
 

@@ -1,5 +1,4 @@
 'use client' // Error components must be Client Components
-import styles from '../styles/search.module.scss'
 
 import { useEffect } from 'react'
 

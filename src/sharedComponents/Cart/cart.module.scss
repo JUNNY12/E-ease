@@ -43,7 +43,7 @@
     align-items: center;
 }
 
-.cartEmpty{
+.cartEmpty {
     @include flex-center;
     flex-direction: column;
     height: 400px;
@@ -53,11 +53,117 @@
     color: $black-200;
     color: $black-950;
 
-    @include mobileL{
+    @include mobileL {
         font-size: $font-size-huge;
     }
 }
 
-.bigCartIcon{
+.bigCartIcon {
     font-size: $font-size-2-5;
 }
+
+.cartItemWrapper{
+    height: 60vh;
+    overflow-y: auto;
+}
+
+.cartItemContainer {
+    margin-top: $margin-xx-large;
+    .price {
+        font-weight: $font-weight-bold;
+
+    }
+
+    .imageCart {
+        position: relative;
+        @include flex;
+
+        .name {
+            margin-left: $margin-medium;
+        }
+
+        .image {
+            position: relative;
+            height: 60px;
+            width: 60px;
+
+            img {
+                border-radius: 4px;
+
+            }
+
+            .delete {
+                position: absolute;
+                z-index: 3;
+                top: -4px;
+                right: -4px;
+                font-weight: $font-weight-bold;
+                outline: none;
+                border: none;
+                height: 20px;
+                width: 20px;
+                @include flex;
+                justify-content: center;
+                align-items: center;
+                color: $white-50;
+                background-color: $black-500;
+                border-radius: 100%;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .itemWrap {
+        margin-bottom: $margin-large;
+        padding-bottom: $padding-small;
+        border-bottom: $border-width-small solid $black-300;
+        @include flex;
+        justify-content: space-between;
+    }
+
+    .buttonWrap {
+        @include flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80px;
+        height: 40px;
+        border: $border-width-small solid $white-300;
+        border-radius: 20px;
+        margin-top: $margin-small;
+        padding: $padding-medium;
+        background-color: $black-300;
+
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: $font-size-huge;
+            font-weight: $font-weight-bold
+        }
+    }
+
+    .totalPrice{
+        @include flex;
+        justify-content: space-between;
+        font-size: $font-size-huge;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-large;
+        padding-bottom: $padding-small;
+        border-bottom: $border-width-small solid $black-300;
+    }
+
+    .btnCheckout{
+        border: none;
+        outline: none;
+        padding: $padding-small;
+        width: 100%;
+        background-color: $seance-500;
+        border-radius: 24px;
+        color: $white-50;
+        font-size: $font-size-large;
+        font-weight: $font-weight-semi-bold;
+        cursor: pointer;
+    }
+}
+

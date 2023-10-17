@@ -1,7 +1,10 @@
-import styles from '../styles/product.module.scss'
+import styles from './product.module.scss'
 import { Typography } from "@/sharedComponents/Typography/Typography";
 
-export default function BookDetails() {
+type Props = {
+  details: Partial<Product>
+}
+export default function BookDetails({details}:Props) {
 
   return (
     <div>
@@ -13,27 +16,27 @@ export default function BookDetails() {
 
         <div className={styles.detail}>
           <span> Pages: </span>
-          <span> 500 </span>
+          <span> {details?.pageNumber} </span>
         </div>
 
         <div className={styles.detail}>
           <span>Language: </span>
-          <span> English </span>
+          <span> {details?.language} </span>
         </div>
 
         <div className={styles.detail}>
           <span> Realeased: </span>
-          <span> 2021 </span>
+          <span> {details?.yearOfRelease} </span>
         </div>
 
         <div className={styles.detail}>
           <span> Publisher: </span>
-          <span> lorem ipsum</span>
+          <span> {details?.publisher} </span>
         </div>
 
         <div className={styles.detail}>
-          <span> Genre: </span>
-          <span> Fiction </span>
+          <span> Category: </span>
+          <span> {details?.category} </span>
         </div>
 
       </div>

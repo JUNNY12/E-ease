@@ -3,6 +3,7 @@
 
 .header {
     @include container;
+    position: relative;
     padding-top: $padding-medium;
     padding-bottom: $padding-medium;
 }
@@ -48,12 +49,13 @@
 
 .searchContainer {
     position: relative;
+
     @include mobileL {
         display: none;
     }
 }
 
-.searchIcon{
+.searchIcon {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -64,15 +66,16 @@
 
 .searchInput {
     @include input;
-    width: 400px;
+    width: 350px;
     border: $border-width-small solid $black-300;
     padding: $padding-small;
     @include transition-ease;
 
-    &::placeholder{
+    &::placeholder {
         color: $black-600;
         font-size: $font-size-medium;
     }
+
     &:focus {
         outline: none;
         border: $border-width-medium solid $black-400;
@@ -97,10 +100,22 @@
     cursor: pointer;
     padding: $padding-small;
     @include transition-ease;
+    position: relative;
 
     &:hover {
         transform: scale(1.05);
         @include transition-ease;
+    }
+
+    .inCart {
+        display: block;
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        border-radius: 100%;
+        background-color: $seance-500;
+        top: 5px;
+        right: 5px;
     }
 
 
@@ -158,6 +173,7 @@
         li {
             margin-bottom: $margin-medium;
             font-size: $font-size-large;
+
             a {
                 text-decoration: none;
                 color: $black-600;
@@ -189,5 +205,144 @@
     &:hover {
         transform: scale(1.05);
         @include transition-ease
+    }
+}
+
+.account {
+    background-color: $white-600;
+    font-weight: $font-weight-semi-bold;
+    color: $white-50;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    position: relative;
+    min-width: 120px;
+    @include transition-ease;
+
+    &:hover {
+        background-color: $seance-500;
+        @include transition-ease;
+    }
+
+    @include tabletS {
+        display: none;
+    }
+}
+
+.arrowDown {
+    font-size: $font-size-large;
+    position: absolute;
+    bottom: 8px;
+    right: 4px;
+}
+
+.dropDownAccount {
+    position: absolute;
+    right: 200px;
+    top: 70px;
+    background-color: $white-50;
+    border-radius: $border-radius-small;
+    z-index: $z-index-1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+    @include tabletS {
+        display: none;
+    }
+}
+
+.signIn {
+    background-color: $seance-600;
+    color: $white-50;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    cursor: pointer;
+    position: relative;
+    width: 150px;
+    @include transition-ease;
+    border: none;
+    outline: none;
+
+    &:hover {
+        background-color: $seance-500;
+        @include transition-ease;
+    }
+}
+
+.signOut {
+    @extend .signIn;
+}
+
+.buttonWrap {
+    padding: $padding-medium;
+    border-bottom: $border-width-medium solid $black-100;
+    margin-bottom: $margin-medium;
+}
+
+.welcome {
+    @extend .buttonWrap;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    font-weight: $font-weight-bold;
+}
+
+.otherLinks {
+    padding-left: $padding-medium;
+    padding-right: $padding-medium;
+}
+
+.otherItem {
+    margin-bottom: $margin-medium;
+    font-size: $font-size-large;
+    padding: $padding-small;
+    border-radius: $border-radius-small;
+    @include transition-ease;
+
+    &:hover {
+        background-color: $white-100;
+        @include transition-ease;
+    }
+
+    a {
+        text-decoration: none;
+        color: $black-950;
+        margin-left: 10px;
+    }
+
+}
+
+.bottomSignIn {
+    position: absolute;
+    bottom: 40px;
+}
+
+.myAccount {
+    margin-top: $margin-large;
+}
+
+.myAccountLink {
+    font-size: $font-size-large;
+
+    a {
+        text-decoration: none;
+        color: $black-600;
+        @include transition-ease;
+
+        span:nth-child(2) {
+            margin-left: $margin-small;
+        }
+
+        &:hover {
+            color: $black-950;
+            border-bottom: $border-width-small solid $black-950;
+            font-weight: $font-weight-regular;
+            @include transition-ease;
+        }
+    }
+}
+
+.dropDownAccountWrapper {
+    @include tabletS {
+        display: none;
     }
 }

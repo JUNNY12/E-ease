@@ -12,9 +12,9 @@ type Params = {
 }
 
 export async function generateStaticParams({ params: { category } }: Params) {
-    const categories = await getCategories(category)
+    const categories:Product[] = await getCategories(category)
 
-    return categories.map((product: any) => ({
+    return categories.map((product: Product) => ({
         category: product.category
     })
     )
@@ -22,14 +22,14 @@ export async function generateStaticParams({ params: { category } }: Params) {
 
 export default async function ProductCategory({ params: { category } }: Params) {
 
-    const data = await getCategories(category)
+    const data:Product[] = await getCategories(category)
 
     if (data.length === 0) return notFound()
 
     return (
         <>
             <Suspense fallback={<CardLoader />}>
-                <GridProducts data={data} />
+                <GridProducts books={data} />
             </Suspense>
         </>
     )

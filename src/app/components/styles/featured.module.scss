@@ -69,6 +69,7 @@
     @include card-button
 }
 
+
 .priceButton {
     @include price-button
 }
@@ -79,24 +80,12 @@
 
 .productsGridContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
     place-items: center;
-
-    @include tabletL {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    @include mobileL {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    @include mobileM {
-        grid-template-columns: repeat(8, 1fr);
-        height: 300px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-    }
+    grid-template-columns: repeat(10, 1fr);
+    height: 300px;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .card {
@@ -109,6 +98,12 @@
         height: 250px;
         width: 250px;
     }
+
+    a {
+        text-decoration: none;
+        color: $black-950 ;
+    }
+
 }
 
 

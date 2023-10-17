@@ -1,18 +1,16 @@
-import { RootUrl } from "./getProducts"
-// import books from "@/data/products"
+import { base_URL } from "@/lib/constants/baseUrl";
 
 
-// export default async function getCategories(category: string) {
-//         const lowercaseCategory = category.toLowerCase();
-
-//         const matchingProducts = books.filter((product: any) =>
-//                 product.category.toLowerCase() === lowercaseCategory
-//         );
-//         return matchingProducts;
-// }
 
 export default async function getCategories(category: string) {
-        const res = await fetch(`${RootUrl}/api/categories/${category}`);
-        const matchingProducts = await res.json();
-        return matchingProducts;
+        try {
+                const res = await fetch(`${base_URL}/products/category/${category}`);
+                const product = await res.json()
+                return product
+        }
+        catch (err) {
+                console.log(err)
+
+        }
+
 }
