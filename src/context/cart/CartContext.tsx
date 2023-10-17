@@ -1,4 +1,6 @@
-import { createContext} from "react";
+"use client"
+
+import { createContext } from "react";
 import { useCartContext } from "@/hooks/cart/useCartContext";
 
 export type UseCartContextType = ReturnType<typeof useCartContext>
@@ -14,7 +16,7 @@ const initialCartContextState: UseCartContextType = {
     removeFromCart: () => { },
     decreaseQuantity: () => { },
     updateQuantity: () => { },
-    checkInCart:(productId:string| undefined) => false,
+    checkInCart: (productId: string | undefined) => false,
     state: {
         cart: {
             items: [],
@@ -31,12 +33,12 @@ type ChildrenType = {
 }
 export const CartProvider = ({ children }: ChildrenType) => {
     const savedCart = window.localStorage.getItem('cart')
-    const { state, addTocart, removeFromCart, updateQuantity, checkInCart,decreaseQuantity } = useCartContext({
+    const { state, addTocart, removeFromCart, updateQuantity, checkInCart, decreaseQuantity } = useCartContext({
         cart: savedCart ? JSON.parse(savedCart) : initialCartContextState.state.cart
     })
 
     return (
-        <CartContext.Provider value={{ state, addTocart, removeFromCart, updateQuantity,checkInCart, decreaseQuantity }}>
+        <CartContext.Provider value={{ state, addTocart, removeFromCart, updateQuantity, checkInCart, decreaseQuantity }}>
             {children}
         </CartContext.Provider>
     )
