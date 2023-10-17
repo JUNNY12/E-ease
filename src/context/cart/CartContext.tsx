@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext } from "react";
+import { createContext , useMemo} from "react";
 import { useCartContext } from "@/hooks/cart/useCartContext";
 
 export type UseCartContextType = ReturnType<typeof useCartContext>
@@ -32,7 +32,9 @@ type ChildrenType = {
     children: React.ReactNode
 }
 export const CartProvider = ({ children }: ChildrenType) => {
-    const savedCart = window.localStorage.getItem('cart')
+    const savedCart = useMemo(() => {
+        return window.localStorage.getItem('cart');
+    }, []);
     const { state, addTocart, removeFromCart, updateQuantity, checkInCart, decreaseQuantity } = useCartContext({
         cart: savedCart ? JSON.parse(savedCart) : initialCartContextState.state.cart
     })
