@@ -1,6 +1,7 @@
 "use client"
 import { createContext, useState , useEffect} from "react"
-import { usePathname } from "next/navigation"
+import { usePathname} from "next/navigation"
+import { useWidth } from "@/hooks/width/useWidth"
 
 
 export type DashboardToggleContextType = {
@@ -14,30 +15,31 @@ export type DashboardToggleContextType = {
 
 type ChildrenProps = {
     children: React.ReactNode,
-    forwardRef?: React.RefObject<HTMLDivElement> | null
 }
 
 const initialState: DashboardToggleContextType = {
-    showSideBar: true,
-    handleShowSideBar: () => { },
-    handleCloseSideBar: () => { },
+    showSideBar: false,
+    handleShowSideBar: () => {},
+    handleCloseSideBar: () => {},
     showDropDown: false,
-    handleShowDropDown: () => { },
-    handleOutsideClick: () => { }
+    handleShowDropDown: () => {},
+    handleOutsideClick: () => {}
 }
 
 export const DashboardToggleContext = createContext(initialState)
-
-
-export function DashboardToggleProvider({ children, forwardRef }: ChildrenProps) {
-    const [showSideBar, setShowSideBar] = useState<boolean>(true)
+export function DashboardToggleProvider({ children}: ChildrenProps) {
+    const [showSideBar, setShowSideBar] = useState<boolean>(false)
     const [showDropDown, setShowDropDown] = useState<boolean>(false)
     const [showOverlay, setShowOverlay] = useState<boolean>(false)
     const pathname = usePathname()
-    
+    const width = useWidth()
 
     useEffect(() => {
-        setShowSideBar(false)
+        setShowSideBar(width <= 1024)
+    }, [width])
+
+    useEffect(() => {
+        setShowSideBar(!showSideBar)
     }, [pathname])
 
     const handleShowSideBar = () => {
@@ -59,11 +61,9 @@ export function DashboardToggleProvider({ children, forwardRef }: ChildrenProps)
             setShowDropDown(false)
             setShowSideBar(false)
         }
-
     }
 
     const overlayElement = (<div className='overlay'></div>)
-
 
     return (
         <DashboardToggleContext.Provider value={{

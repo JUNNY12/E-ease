@@ -1,7 +1,5 @@
 import { base_URL } from "@/lib/constants/baseUrl";
 
-
-
 export default async function getCategories(category: string) {
         try {
                 const res = await fetch(`${base_URL}/products/category/${category}`);
@@ -10,7 +8,6 @@ export default async function getCategories(category: string) {
         }
         catch (err) {
                 console.log(err)
-
         }
 
 }

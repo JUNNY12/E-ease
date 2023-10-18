@@ -31,7 +31,6 @@ export const useReview = (productId: string | undefined) => {
         mutationFn: addReview,
         onSuccess: () => {
             queryClient.invalidateQueries(['reviews'], { exact: true })
-            console.log('success')
         },
 
         onError: (error) => {

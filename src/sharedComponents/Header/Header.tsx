@@ -12,6 +12,7 @@ import Search from "../Search/Search"
 import { FaSearch, FaUser } from "react-icons/fa"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { useCart } from "@/hooks/cart/useCart"
+import { useEffect, useState } from "react"
 
 
 export default function Header() {
@@ -23,7 +24,12 @@ export default function Header() {
         handleToggleAccount,
         toggleAccount
     } = useHandleToggle()
-    const {state:{cart}} = useCart()
+    const { state: { cart } } = useCart()
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
 
     return (
         <header className={styles.header} >
@@ -76,14 +82,15 @@ export default function Header() {
                 <div className={styles.dropDownAccountWrapper}>
                     {toggleAccount && <DropDownAccount />}
                 </div>
-
                 <div
                     onClick={handleOpenCart}
                     className={styles.cartIcon}>
-                    <GrCart />
-                    {
-                        cart?.items?.length !== 0 && <span className={styles.inCart}></span>
-                    }
+                    <span><GrCart /></span>
+                    <span>
+                        {
+                            (isClient && cart?.items?.length !== 0) && <span className={styles.inCart}></span>
+                        }
+                    </span>
                 </ div>
             </nav>
         </header>

@@ -55,7 +55,7 @@ export default function SideBar() {
 
 
     return (
-        <aside className={(showSideBar && width > 1024)? styles.sideBar : (showSideBar && width < 1024)? styles.hideSideBar :(showSideBar && width == 1024)? styles.hideSideBar : styles.sideBar}>
+        <aside className={!showSideBar ? styles.sideBar : styles.hideSideBar}>
             <ul>
                 {
                     routes.map((route, index) => {

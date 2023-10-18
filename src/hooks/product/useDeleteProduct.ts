@@ -38,7 +38,6 @@ export const useDeleteProduct = (bookId: string | undefined, publicId: string) =
     async function deleteProduct() {
         try {
             if (publicId && bookId) {
-                console.log(publicId, bookId)
                 const res = await axiosPrivate.post(base_URL + `/products/${bookId}`, {
                     public_id: publicId
                 })

@@ -1,11 +1,9 @@
 import { AuthOptions } from "./api/auth/auth";
 import { getServerSession } from "next-auth"
-
-
-const baseUrl = process.env.NEXT_PUBLIC_EXTERNAL_API_URL;
+import { base_URL } from "./constants/baseUrl";
 
 const refreshToken = async (refreshToken: string) => {
-    const res = await fetch(`${baseUrl}/refresh`, {
+    const res = await fetch(`${base_URL}/refresh`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -48,12 +46,12 @@ export const GetApiAuth = async (url: string, method: string = 'GET', body?: any
     }
 
     try {
-        let res = await fetch(`${baseUrl}${url}`, options)
+        let res = await fetch(`${base_URL}${url}`, options)
 
         if (res.status === 401 || res.status === 403) {
             if (session) session.user.accessToken = await refreshToken(session.user.refreshToken ?? "");
             options.headers.Authorization = `Bearer ${session?.user?.accessToken}`
-            res = await fetch(`${baseUrl}${url}`, options)
+            res = await fetch(`${base_URL}${url}`, options)
 
             if (res.ok) {
                 const data = await res.json();
@@ -68,6 +66,5 @@ export const GetApiAuth = async (url: string, method: string = 'GET', body?: any
 
     } catch (error) {
         console.error(error);
-        // Handle the error appropriately
     }
 }

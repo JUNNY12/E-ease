@@ -4,7 +4,6 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
         case CartActionTypes.ADD_TO_CART: {
             const existingItem = state.cart?.items?.find(item => item.productId === action.payload?.productId);
             if (existingItem) {
-                console.log('true')
                 existingItem.quantity = (existingItem.quantity ?? 0) + 1;
                 existingItem.total = existingItem.quantity * (existingItem.price ?? 0);
             } else {
