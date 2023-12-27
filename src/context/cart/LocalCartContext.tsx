@@ -7,14 +7,12 @@ export const CartActionTypes = {
     ADD_TO_CART: 'ADD_TO_CART',
     DECREASE_QUANTITY: 'DECREASE_QUANTITY',
     REMOVE_FROM_CART: 'REMOVE_FROM_CART',
-    UPDATE_QUANTITY: 'UPDATE_QUANTITY',
     CLEAR_CART: 'CLEAR_CART',
 }
 const initialCartContextState: UseLocalCartContextType = {
     addTocart: () => { },
     removeFromCart: () => { },
     decreaseQuantity: () => { },
-    updateQuantity: () => { },
     checkInCart: (productId: string | undefined) => false,
     state: {
         cart: {
@@ -32,12 +30,12 @@ type ChildrenType = {
 }
 export const LocalCartProvider = ({ children }: ChildrenType) => {
     const savedCart = typeof window !== "undefined" ? window.localStorage.getItem("cart") : null;
-    const { state, addTocart, removeFromCart, updateQuantity, checkInCart, decreaseQuantity } = useLocalCartContext({
+    const { state, addTocart, removeFromCart, checkInCart, decreaseQuantity } = useLocalCartContext({
         cart: savedCart ? JSON.parse(savedCart) : initialCartContextState.state.cart
     })
 
     return (
-        <LocalCartContext.Provider value={{ state, addTocart, removeFromCart, updateQuantity, checkInCart, decreaseQuantity }}>
+        <LocalCartContext.Provider value={{ state, addTocart, removeFromCart, checkInCart, decreaseQuantity }}>
             {children}
         </LocalCartContext.Provider>
     )
