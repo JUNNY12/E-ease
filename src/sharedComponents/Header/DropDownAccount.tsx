@@ -11,7 +11,7 @@ export default function DropDownAccount() {
     const { handleOutsideClick } = useHandleToggle()
     const ref = useRef<HTMLDivElement>(null)
 
-    const { data:user} = useSession()
+    const { data:user, status} = useSession()
 
     const userInfo = user?.user?.userInfo
 
@@ -31,11 +31,6 @@ export default function DropDownAccount() {
     
     return (
         <div className={styles.dropDownAccount} ref={ref}>
-            {
-                userInfo?.username && (
-                    <div className={styles.welcome}>Hi, {userInfo?.username}</div>
-                )
-            }
             <div className={styles.buttonWrap}>
                 {!userInfo?._id
                 ? (

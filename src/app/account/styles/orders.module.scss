@@ -1,0 +1,101 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.container{
+    background-color: $white-50;
+    border-radius: $border-radius-small;
+    padding: $padding-medium;
+    color: $black-600;
+
+    h1{
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-medium;
+    
+    }
+
+    .list{
+        list-style: none;
+    }
+}
+
+.orderItem{
+    margin-bottom: 1rem;
+    border-radius: $border-radius-small;
+    border:$border-width-small solid $white-200;
+    display:grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
+    gap: 1rem;
+    padding: $padding-medium;
+
+    @include tabletS(){
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mobileM(){
+        grid-template-columns: 1fr 1fr;
+    }
+    .viewWrap{
+        @include mobileM(){
+            display: none;
+        }
+    }
+
+    .imageContainer{
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+
+    p{
+        padding: $padding-small;
+        font-size: $font-size-small
+    }
+    
+    .delivered{
+        background-color: $delivered;
+        color: $white-50;
+        border-radius: $border-radius-small;
+        padding: $padding-small;
+        text-align: center;
+        width:100px;
+        padding: $padding-small;
+    }
+
+    .pending{
+        @extend .delivered;
+        background-color: $pending;
+    }
+
+    .processing{
+        @extend .delivered;
+        background-color: $processing;
+    }
+
+    .shipped{
+        @extend .delivered;
+        background-color: $shipped;
+    }
+
+    .failed{
+        @extend .delivered;
+        background-color: $failed;
+    }
+
+    .view{
+        color: $seance-400;
+        text-decoration: none;
+        font-weight: $font-weight-bold;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: $padding-small;
+        @include transition-ease;
+        border-radius: $border-radius-small;
+
+        &:hover{
+            background-color: $seance-100;
+            @include transition-ease;
+        }
+    }
+}

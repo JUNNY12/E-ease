@@ -3,12 +3,16 @@ import Image from "next/image"
 import { Typography } from "@/sharedComponents/Typography/Typography"
 import { formatCurrency } from "@/lib/utils/formatCurrency"
 
-export default function Item() {
+type Props = {
+    item:Item
+}
+
+export default function Item({item}:Props) {
     return (
         <div className={styles.itemContainer}>
             <div className={styles.column1}>
                 <div className={styles.imageWrap}>
-                    <div className={styles.quantity}>3</div>
+                    <div className={styles.quantity}>{item.quantity}</div>
                     <Image src='/images/image2.jpg' width={80} height={80} alt="cart" />
                 </div>
                 <div className={styles.title}>
@@ -21,7 +25,7 @@ export default function Item() {
             </div>
             <div className={styles.price}>
                 <div>
-                    {formatCurrency(30)}
+                    {formatCurrency(item.price ?? 0)}
                 </div>
             </div>
         </div>

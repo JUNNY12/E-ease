@@ -1,7 +1,7 @@
 
 type ButtonProps = {
     children: React.ReactNode;
-    onClick?: () => void;
+    onClick?:() => void;
     title?: string;
     className?: string;
     disabled?: boolean;

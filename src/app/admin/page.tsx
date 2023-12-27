@@ -1,5 +1,5 @@
 "use client"
-import Logo from '@/sharedComponents/Logo/Logo'
+import AuthHeader from '../auth/component/Header'
 import { Button } from '@/sharedComponents/Button/Button'
 import { Typography } from '@/sharedComponents/Typography/Typography'
 import { Input } from '@/sharedComponents/Input/Input'
@@ -104,13 +104,13 @@ export default function Admin({ searchParams }: IProps) {
 
 
     return (
-        <section className={styles.formWrapper}>
+        <>
+            <AuthHeader/>
+            <section className={styles.formWrapper}>
             <div className={styles.formContainer}>
-                <div>
-                    <Logo />
-                </div>
+
                 <Typography variant={1}>
-                    ADMIN LOGIN
+                    Admin Login
                 </Typography>
 
                 <form onSubmit={handleSubmit}>
@@ -138,5 +138,6 @@ export default function Admin({ searchParams }: IProps) {
                 </form>
             </div>
         </section>
+        </>
     )
 }

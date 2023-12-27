@@ -105,3 +105,44 @@ body {
     color: $black-900;
     font-size: $font-size-huge;
 }
+
+.pageNotFound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding: $padding-medium;
+    h1{
+        font-size: $font-size-5;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-small;
+        color:$seance-500;
+    }
+    .container{
+        background-color:$white-50;
+        padding: $padding-medium;
+        @include flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: max-content;
+        border-radius: $border-radius-small;
+        box-shadow: 0 0 20px rgba(15, 15, 15, 0.5);
+
+        .notFound{
+                font-size: $font-size-2;
+                padding: $padding-small;
+                margin-bottom: $margin-medium;
+            }
+        .button{
+            text-decoration: none;
+            margin-top: $margin-small;
+            background-color: $seance-500;
+            color: $white-50;
+            border-radius: $border-radius-small;
+            padding: $padding-small $padding-medium;
+        }
+        }
+}
+

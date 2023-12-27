@@ -8,7 +8,8 @@ import { useAuthForm } from "@/hooks/form/useAuthForm"
 import { FormEvent } from "react"
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify"
-import { useSession } from "next-auth/react"
+import { useState } from "react"
+import { BeatLoader } from "react-spinners"
 
 const initialState = {
     username: '',
@@ -16,12 +17,14 @@ const initialState = {
 }
 export default function ReAuthenticateForm() {
     const { state, handleInputChange, resetForm } = useAuthForm(initialState)
+    const [loading, setLoading] = useState(false)
     const canSubmit = state.username && state.password
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         try {
+            setLoading(true)
             const res = await signIn('credentials', {
                 username: state.username,
                 password: state.password,
@@ -64,6 +67,7 @@ export default function ReAuthenticateForm() {
                     theme: "light",
                 })
             }
+            setLoading(false)
         } catch (error) {
             toast.error('An unexpected error occurred', {
                 position: "top-right",
@@ -76,6 +80,7 @@ export default function ReAuthenticateForm() {
                 theme: "light",
             })
             console.error(error)
+            setLoading(false)
         }
     }
 
@@ -84,9 +89,6 @@ export default function ReAuthenticateForm() {
         <div className={styles.overlay}>
             <div className={styles.reauthenticate}>
                 <div className={styles.formContainer}>
-                    <div>
-                        <Logo />
-                    </div>
                     <Typography variant={1}>
                         Re-authenticate to continue
                     </Typography>
@@ -110,7 +112,11 @@ export default function ReAuthenticateForm() {
                         <Button
                             disabled={!canSubmit}
                             className={canSubmit ? styles.button : styles.disabled}>
-                            Log In
+                            {
+                                loading ? 
+                                    <span> LOADING <BeatLoader color='white' size={10} /></span>
+                                : 'Login'
+                            }
                         </Button>
 
                     </form>

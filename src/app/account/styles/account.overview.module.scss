@@ -1,0 +1,60 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.overview{
+    background-color: $white-50;
+    border-radius: $border-radius-small;
+    padding: $padding-medium;
+    color: $black-600;
+
+    h1{
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+        margin-bottom: $margin-medium;
+    
+    }
+
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap:1rem;
+
+        @include laptopS{
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.details{
+    border-radius: $border-radius-small;
+    border:$border-width-small solid $white-200;
+
+    h2{
+        border-bottom:$border-width-small solid $white-200;
+        font-size: $font-size-medium;
+        padding: $padding-medium;
+        display: flex;
+        justify-content: space-between;
+
+        span{
+            &:nth-child(2){
+                display: inline-block;
+                font-size: $font-size-large;
+                cursor: pointer;
+                @include transition-ease;
+
+                &:hover{
+                    color:$seance-500;
+                    border-radius: 100%;
+                }
+            }
+        }
+    }
+
+    p{
+        padding: $padding-small $padding-medium;
+    }
+}
+.address{
+    @extend .details;
+}

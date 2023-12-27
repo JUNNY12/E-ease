@@ -10,10 +10,12 @@ import { IState } from "@/reducer/form/formReducer"
 import { useAuthForm } from "@/hooks/form/useAuthForm"
 import { registerUser } from "@/lib/api/auth/register"
 import { useState } from 'react'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { BeatLoader } from 'react-spinners'
+import { useRouter } from "next/navigation"
 
 export default function RegisterForm() {
-
+    const router = useRouter()
     const initialState: IState = {
         username: '',
         email: '',
@@ -24,6 +26,7 @@ export default function RegisterForm() {
     }
 
     const { state, handleInputChange, resetForm } = useAuthForm(initialState)
+    const [loading, setLoading] = useState(false)
     const canSubmit = state.username &&
         state.email &&
         state.passwordError === '' &&
@@ -34,13 +37,12 @@ export default function RegisterForm() {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setLoading(true)
         const { responseData, errorMessage } = await registerUser({
             username: state.username,
             email: state.email,
             password: state.password,
         })
-
-        console.log(responseData, errorMessage)
 
         if (responseData) {
             toast.success('Registration successful',
@@ -55,6 +57,9 @@ export default function RegisterForm() {
                     theme: "light",
                 })
             resetForm()
+            setTimeout(() => {
+                router.push('/auth/login')
+            }, 1500)
         }
 
         if (errorMessage) {
@@ -69,14 +74,12 @@ export default function RegisterForm() {
                 theme: "light",
             })
         }
+        setLoading(false)
     }
 
 
     return (
         <div className={styles.formContainer}>
-            <div>
-                <Logo />
-            </div>
             <Typography variant={1}>
                 Create an Account
             </Typography>
@@ -153,7 +156,18 @@ export default function RegisterForm() {
 
                 <Button
                     disabled={!canSubmit}
-                    className={canSubmit ? styles.button : styles.disabled}>Register</Button>
+                    className={canSubmit ? styles.button : styles.disabled}>
+                    {
+                        loading ?
+                            <span>
+                                LOADING <BeatLoader color='#fff' size={8} />
+                            </span>
+                            :
+                            <span>
+                                Register
+                            </span>
+                    }
+                    </Button>
             </form>
 
             <p>

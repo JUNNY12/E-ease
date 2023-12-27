@@ -9,8 +9,12 @@ import { FaPlus } from 'react-icons/fa'
 import MoreDetails from '../../../sharedComponents/Product/MoreDetails'
 import Review from '@/sharedComponents/Product/Review'
 import AddReviewForm from './AddReviewForm'
+import { useLocalCart } from '@/hooks/cart/useLocalCart'
+import { useSession } from 'next-auth/react'
+import { BeatLoader } from 'react-spinners'
+import { useClient } from '@/hooks/useClient'
 import { useCart } from '@/hooks/cart/useCart'
-import useHandleToggle from '@/hooks/toggle/useToggleHeader'
+
 
 type Props = {
     product: Product
@@ -18,20 +22,36 @@ type Props = {
 
 
 export default function ProductContainer({ product }: Props) {
-    const { addTocart, state: { cart }, checkInCart } = useCart()
-    const {handleOpenCart} = useHandleToggle()
-    const payload = {
-        productId: product?._id,
-        price: product?.price,
+    const {status } = useSession()
+    const {checkInCart } = useLocalCart()
+    const { handleAddToCart, addToCartMutation } = useCart()
+    const isClient = useClient()
+
+    function returnPayload() {
+        let payload;
+        if (status === 'authenticated') {
+            payload = {
+                productId: product?._id,
+                quantity: 1,
+            }
+        }
+        else {
+            payload = {
+                productId: product?._id,
+                price: product?.price,
+                title: product?.title,
+                image: product?.image?.url ?? '',
+            }
+        }
+        return payload
+    }
+    
+    const add = () => {
+        const payloadData = returnPayload()
+        console.log(payloadData)
+        handleAddToCart(payloadData)
     }
 
-    const add = (payload: any): (() => void) => {
-        return () => {
-            addTocart(payload)
-            handleOpenCart()
-        };
-    };
-    
     return (
         <section className={styles.productContainer} >
             <div className={styles.wrapperContainer}>
@@ -59,15 +79,22 @@ export default function ProductContainer({ product }: Props) {
                         <Rating rating={product?.averageRating ?? 0} />
                     </div>
 
-                    <Button className={styles.buttonStyle} title='Add to cart' onClick={add(payload)}>
+                    <Button className={styles.buttonStyle} title='Add to cart' onClick={add}>
                         <span className={styles.plusIcon}>
                             <FaPlus />
                         </span>
-                        <span className={styles.addButton}>
-                            {
-                                checkInCart(product?._id) ? 'Increase quantity' : 'Add to cart'
-                            }
-                        </span>
+                        {
+                            status === 'authenticated' ?
+                                (<span className={styles.addButton}>
+                                    {addToCartMutation.isLoading ? <span> Adding <BeatLoader size={8} color='#ffffff' /></span> : 'Add to cart'}
+                                </span>)
+                                :
+                                (<span className={styles.addButton}>
+                                    {
+                                        (checkInCart(product?._id) && isClient) ? 'Added' : 'Add to cart'
+                                    }
+                                </span>)
+                        }
                     </Button>
                 </div>
             </div>

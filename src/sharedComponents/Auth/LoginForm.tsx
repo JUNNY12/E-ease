@@ -2,7 +2,6 @@
 import { Input } from "../Input/Input"
 import { Typography } from "../Typography/Typography"
 import { Button } from "../Button/Button"
-import Logo from "../Logo/Logo"
 import styles from './auth.module.scss'
 import Link from "next/link"
 import { useAuthForm } from "@/hooks/form/useAuthForm"
@@ -10,8 +9,9 @@ import { FormEvent } from "react"
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify"
 import { useMemo } from 'react'
-import { useSession } from "next-auth/react"
 import { useSearchParams } from 'next/navigation'
+import { BeatLoader } from 'react-spinners'
+import { useState } from "react"
 
 const initialState = {
   username: '',
@@ -20,19 +20,21 @@ const initialState = {
 
 export default function LoginForm() {
   const { state, handleInputChange, resetForm } = useAuthForm(initialState)
+  const [loading, setLoading] = useState(false)
   const canSubmit = useMemo(() => state.username && state.password, [state.username, state.password])
   const callbackUrl = useSearchParams().get('callbackUrl')
-  const urlReplace = callbackUrl?.replace('http://localhost:3000', '')
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     try {
+      setLoading(true)
       const res = await signIn('credentials', {
         username: state.username,
         password: state.password,
         redirect: true,
         callbackUrl: callbackUrl ?? '/'
       })
+
 
       if (res?.error === 'CredentialsSignin') {
         toast.error('Authenication failed: Check your username or password', {
@@ -58,6 +60,7 @@ export default function LoginForm() {
           theme: "light",
         })
       }
+      setLoading(false)
     } catch (error) {
       toast.error('An unexpected error occurred', {
         position: "top-right",
@@ -70,15 +73,12 @@ export default function LoginForm() {
         theme: "light",
       })
       console.error(error)
+      setLoading(false)
     }
   }
 
-
   return (
     <div className={styles.formContainer}>
-      <div>
-        <Logo />
-      </div>
       <Typography variant={1}>
         Welcome on board
       </Typography>
@@ -102,11 +102,16 @@ export default function LoginForm() {
         <Button
           disabled={!canSubmit}
           className={canSubmit ? styles.button : styles.disabled}>
-          Log In
+          {
+            loading ?
+              <span>
+                Loading <BeatLoader color='#fff' size={8} />
+              </span>
+              : 'Login'
+          }
         </Button>
 
       </form>
-
 
       <p>
         Don't have an account? <Link href="/auth/register">Sign Up</Link>

@@ -1,7 +1,9 @@
 import { cartReducer } from "@/reducer/cart/cartReducer"
 import { useReducer, useMemo } from "react"
-import { CartActionTypes } from "@/context/cart/CartContext"
-export const useCartContext = (initialCartState: CartState) => {
+import { CartActionTypes } from "@/context/cart/LocalCartContext"
+
+
+export const useLocalCartContext = (initialCartState: CartState) => {
     const [state, dispatch] = useReducer(cartReducer, initialCartState)
 
     const REDUCER_ACTIONS = useMemo(() => {
@@ -16,10 +18,6 @@ export const useCartContext = (initialCartState: CartState) => {
         dispatch({ type: REDUCER_ACTIONS.REMOVE_FROM_CART, payload })
     }
 
-    const updateQuantity = (payload:Item) => {
-        dispatch({ type: REDUCER_ACTIONS.UPDATE_QUANTITY, payload })
-    }
-
     const decreaseQuantity = (payload:Item) => {
         dispatch({ type: REDUCER_ACTIONS.DECREASE_QUANTITY, payload })
     }
@@ -28,5 +26,5 @@ export const useCartContext = (initialCartState: CartState) => {
         return state.cart?.items?.some(item => item.productId === productId) || false
     }
 
-    return { state, addTocart, removeFromCart, updateQuantity , checkInCart, decreaseQuantity }
+    return { state, addTocart, removeFromCart, checkInCart, decreaseQuantity }
 }

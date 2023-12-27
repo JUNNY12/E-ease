@@ -4,41 +4,54 @@ import styles from "./cart.module.scss"
 import Image from "next/image"
 import { Button } from "../Button/Button"
 import { useCart } from "@/hooks/cart/useCart"
+import { useSession } from "next-auth/react"
 
 export const CartItem = () => {
-    const { removeFromCart, decreaseQuantity, updateQuantity, state: { cart } } = useCart()
+    const { status } = useSession()
+    const { cartData, handleAddToCart, handleDecreaseItem, handleRemoveFromCart } = useCart()
 
-    const addItem = (payload: any): (() => void) => {
+    const add = (payload: any): (() => void) => {
         return () => {
-            updateQuantity(payload)
+            handleAddToCart(payload)
         };
-    };
+    }
 
     const removeItem = (payload: any): (() => void) => {
         return () => {
-            removeFromCart(payload)
+            handleRemoveFromCart(payload)
         };
     };
 
     const decreaseItem = (payload: any): (() => void) => {
         return () => {
-            decreaseQuantity(payload)
+            handleDecreaseItem(payload)
         };
     };
 
     return (
         <div className={styles.cartItemContainer}>
             {
-                cart?.items?.map((item, i) => {
+                cartData?.items?.map((item: any, i) => {
                     return (
                         <div key={i} className={styles.itemWrap}>
                             <div className={styles.imageCart}>
                                 <div className={styles.image}>
-                                    <Button onClick={removeItem({ productId: item.productId })} className={styles.delete}>X</Button>
-                                    <Image src={`/images/image 1.jpg`} fill={true} alt='text' />
+                                    <Button onClick={removeItem({ productId: item.productId, itemId:item._id })} className={styles.delete}>X</Button>
+                                    <Image
+                                        src={
+                                            status === 'authenticated' ? item?.productId?.image?.url : item?.image
+                                        }
+                                        fill={true}
+                                        alt={
+                                            status === 'authenticated' ? item?.productId?.title : item?.title
+                                        }
+                                        sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw)"
+                                    />
                                 </div>
                                 <div className={styles.name}>
-                                    lorem ipsum
+                                    {
+                                        status === 'authenticated' ? item?.productId?.title : item?.title
+                                    }
                                 </div>
                             </div>
                             <div>
@@ -47,15 +60,24 @@ export const CartItem = () => {
                                 </div>
                                 <div className={styles.buttonWrap}>
                                     <Button
-                                        onClick={decreaseItem({ productId: item.productId })}
+                                        onClick={decreaseItem({
+                                            productId: status === 'authenticated' ? item?._id : item?.productId,
+                                        })}
                                         className={styles.btnDecrease}>
                                         -
                                     </Button>
                                     <div>
                                         {item.quantity}
                                     </div>
-                                    <Button onClick={addItem({ productId: item.productId })} className={styles.btnIncrease}>
-                                        +
+                                    <Button
+                                        onClick={add({
+                                            productId: status === 'authenticated' ? item?.productId?._id : item?.productId,
+                                            quantity: 1,
+                                        })}
+                                    >
+                                        <span>
+                                            +
+                                        </span>
                                     </Button>
                                 </div>
                             </div>
@@ -63,18 +85,6 @@ export const CartItem = () => {
                     )
                 })
             }
-            <div className={styles.totalPrice}>
-                <div>
-                    Total price
-                </div>
-                <div>
-                    {formatCurrency(cart?.subTotal ?? 0)}
-                </div>
-            </div>
-
-            <div >
-                <Button className={styles.btnCheckout}>Proceed to checkout</Button>
-            </div>
         </div>
     )
 }

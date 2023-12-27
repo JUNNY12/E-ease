@@ -40,7 +40,6 @@ export const useProductForm = (initialState: Product | undefined) => {
             queryClient.setQueryData(['products', data?._id], data)
             queryClient.invalidateQueries(['products'], { exact: true })
         },
-
         onError: (error) => {
             console.log(`Error creating product ${error}`)
         }
@@ -52,7 +51,6 @@ export const useProductForm = (initialState: Product | undefined) => {
             queryClient.setQueryData(['products', data._id], data)
             queryClient.invalidateQueries(['products'], { exact: true })
         },
-
         onError: (error) => {
             console.log(`Error updating product ${error}`)
         }

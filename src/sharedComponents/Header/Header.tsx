@@ -11,8 +11,9 @@ import DropDownAccount from "./DropDownAccount"
 import Search from "../Search/Search"
 import { FaSearch, FaUser } from "react-icons/fa"
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import { useClient } from "@/hooks/useClient"
 import { useCart } from "@/hooks/cart/useCart"
-import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react"
 
 
 export default function Header() {
@@ -24,12 +25,9 @@ export default function Header() {
         handleToggleAccount,
         toggleAccount
     } = useHandleToggle()
-    const { state: { cart } } = useCart()
-    const [isClient, setIsClient] = useState(false)
-
-    useEffect(() => {
-        setIsClient(true)
-    }, [])
+    const isClient = useClient()
+    const {isEmpty} = useCart()
+    const {status, data:user} = useSession()
 
     return (
         <header className={styles.header} >
@@ -72,8 +70,15 @@ export default function Header() {
                 </div>
 
                 <div className={styles.account} role="button" onClick={handleToggleAccount}>
-                    <span> <FaUser /> </span>
-                    <span> Account </span>
+                    {
+                        status === 'authenticated' 
+                        ? <span> Hi, {user?.user.userInfo?.username}</span>
+                        :
+                        <span>
+                                <span> <FaUser /> </span>
+                                <span> Account </span>
+                        </span>
+                    }
                     <span>{
                         toggleAccount ? <MdKeyboardArrowUp className={styles.arrowDown} /> : <MdKeyboardArrowDown className={styles.arrowDown} />
                     } </span>
@@ -88,7 +93,7 @@ export default function Header() {
                     <span><GrCart /></span>
                     <span>
                         {
-                            (isClient && cart?.items?.length !== 0) && <span className={styles.inCart}></span>
+                            (isClient && !isEmpty) && <span className={styles.inCart}></span>
                         }
                     </span>
                 </ div>

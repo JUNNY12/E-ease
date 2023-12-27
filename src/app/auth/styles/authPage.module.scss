@@ -6,6 +6,13 @@
     @include container;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90dvh;
     
+}
+
+.authHeader{
+    padding: $padding-large;
+    @include mobileL(){
+        padding: $padding-medium;
+    }
 }

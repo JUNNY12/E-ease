@@ -3,6 +3,8 @@ interface Item {
     quantity?: number;
     price?: number;
     total?: number;
+    image?: string;
+    title?: string;
 }
 
 interface Cart {
@@ -29,4 +31,23 @@ const CartActionTypes = {
 interface CartAction {
     type: CartActionTypes;
     payload?: Item | undefined ;
+}
+
+interface ProductId{
+    title:string
+    price:number
+    image:{
+        url:string
+    }
+}
+
+interface ServerItem{
+    productId: ProductId,
+    quantity: number,
+    total: number,
+}
+interface ServerCart{
+    items: ServerItem[],
+    subTotal: number,
+    userId: string,
 }

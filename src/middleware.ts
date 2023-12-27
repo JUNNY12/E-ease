@@ -21,10 +21,10 @@ export default withAuth(
             );
         }
 
-        if (req.nextUrl.pathname.startsWith("/account") && isAdmin)
-            return NextResponse.rewrite(
-                new URL('/admin?message=You are not authorized to access this page', req.url)
-            )
+        // if (req.nextUrl.pathname.startsWith("/account") && isAdmin)
+        //     return NextResponse.rewrite(
+        //         new URL('/admin?message=You are not authorized to access this page', req.url)
+        //     )
 
         if (req.nextUrl.pathname.startsWith("/dashboard") && !isAdmin)
             return NextResponse.rewrite(

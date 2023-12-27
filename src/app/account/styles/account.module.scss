@@ -1,0 +1,75 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+
+.layout {
+    @include container;
+    display: grid;
+    grid-template-columns: 1.5fr 6fr;
+    gap: 1rem;
+
+    @include laptopS {
+        grid-template-columns: 1fr;
+    }
+}
+
+.aside {
+    background-color: $white-50;
+    border-radius: $border-radius-small;
+    position: relative;
+
+    nav {
+        ul {
+            list-style: none;
+
+            .isActive {
+                background-color: $white-600;
+            }
+
+            .activeLink {
+                color: $white-50;
+                font-weight: $font-weight-bold;
+            }
+
+            li {
+                padding: 1rem;
+                cursor: pointer;
+                &:last-child {
+                    border-bottom: none;
+                }
+                a {
+                    text-decoration: none;
+                    color: $black-950;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .buttonContainer{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            border-top: $border-width-small solid $white-200;
+            padding: 1rem;
+            button{
+                width: 100%;
+                padding: 1rem;
+                border-radius: $border-radius-small;
+                border: none;
+                background-color: $white-50;
+                color: $seance-500;
+                font-weight: $font-weight-bold;
+                cursor: pointer;
+                @include transition-ease;
+                &:hover{
+                    background-color: $seance-600;
+                    color: $white-50;
+                    @include transition-ease;
+                }
+            }
+        }
+    }
+}
+

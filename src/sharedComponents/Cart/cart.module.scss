@@ -62,13 +62,12 @@
     font-size: $font-size-2-5;
 }
 
-.cartItemWrapper{
-    height: 60vh;
-    overflow-y: auto;
-}
-
 .cartItemContainer {
     margin-top: $margin-xx-large;
+    padding-top: $padding-small;
+    height: 50vh;
+    overflow-y: auto;
+
     .price {
         font-weight: $font-weight-bold;
 
@@ -132,6 +131,7 @@
         margin-top: $margin-small;
         padding: $padding-medium;
         background-color: $black-300;
+        position: relative;
 
         button {
             background-color: transparent;
@@ -139,31 +139,38 @@
             outline: none;
             cursor: pointer;
             font-size: $font-size-huge;
-            font-weight: $font-weight-bold
+            font-weight: $font-weight-bold;
+            position: relative;
         }
     }
 
-    .totalPrice{
-        @include flex;
-        justify-content: space-between;
-        font-size: $font-size-huge;
-        font-weight: $font-weight-bold;
-        margin-bottom: $margin-large;
-        padding-bottom: $padding-small;
-        border-bottom: $border-width-small solid $black-300;
-    }
-
-    .btnCheckout{
-        border: none;
-        outline: none;
-        padding: $padding-small;
-        width: 100%;
-        background-color: $seance-500;
-        border-radius: 24px;
-        color: $white-50;
-        font-size: $font-size-large;
-        font-weight: $font-weight-semi-bold;
-        cursor: pointer;
-    }
 }
 
+.btnCheckout {
+    border: none;
+    outline: none;
+    padding: $padding-small;
+    width: 100%;
+    background-color: $seance-500;
+    border-radius: 24px;
+    color: $white-50;
+    font-size: $font-size-large;
+    font-weight: $font-weight-semi-bold;
+    cursor: pointer;
+}
+
+.totalPrice {
+    @include flex;
+    justify-content: space-between;
+    font-size: $font-size-huge;
+    font-weight: $font-weight-bold;
+    margin-bottom: $margin-large;
+    padding-bottom: $padding-small;
+    border-bottom: $border-width-small solid $black-300;
+}
+
+.loading{
+    position: absolute;
+    bottom: 0;
+    right: 6px;
+}

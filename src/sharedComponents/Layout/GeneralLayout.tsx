@@ -10,7 +10,6 @@ export default function GeneralLayout({ children }: { children: React.ReactNode 
     const checkoutPath = '/checkout';
     const loginPath = '/auth/login';
     const registerPath = '/auth/register';
-    const accountPath = '/account';
 
     const adminRoute = [
         "/admin",
@@ -27,10 +26,12 @@ export default function GeneralLayout({ children }: { children: React.ReactNode 
 
     if (pathName === informationPath || pathName === checkoutPath) {
         return (
-            <main>
-                {children}
+        <>
+                <main>
+                    {children}
+                </main>
                 <Footer />
-            </main>
+        </>
         );
     }
 
@@ -44,19 +45,13 @@ export default function GeneralLayout({ children }: { children: React.ReactNode 
         );
     }
 
-    if (pathName.includes(accountPath)) {
-        return (
+    return (
+        <>
+            <Header />
             <main>
                 {children}
             </main>
-        )
-    }
-
-    return (
-        <main>
-            <Header />
-            {children}
             <Footer />
-        </main>
+        </>
     );
 }

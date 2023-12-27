@@ -1,5 +1,5 @@
+import { AccountOverview } from "./components/AccountOverview";
+
 export default function Account() {
-    return (
-        <div>My Account</div>
-    )
+    return <AccountOverview />
 }
