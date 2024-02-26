@@ -1,0 +1,108 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.formContainer {
+    @include flex;
+    @include container;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+
+    .formWrapper {
+        background-color: $white-50;
+        padding: $padding-large;
+        width: 400px;
+
+        .header {
+            text-align: center;
+            margin-bottom: $margin-small;
+        }
+
+        .para {
+            text-align: center;
+            margin-bottom: $margin-medium;
+            font-size: $font-size-small;
+            color: $black-600;
+        }
+
+        .statusText {
+            @extend .para
+        }
+
+        .danger {
+            @extend .statusText;
+            color: $failed;
+        }
+
+        .success {
+            @extend .danger;
+            color: $delivered;
+        }
+
+        .icon {
+            text-align: center;
+            margin-bottom: $margin-small;
+            color: $seance-600;
+            font-size: $font-size-3-75;
+        }
+
+        form {
+            @include flex-column;
+
+            input {
+                margin-bottom: $margin-medium;
+                padding: $padding-small;
+                width: 100%;
+                @include input;
+                border-radius: $border-radius-small;
+                background-color: $white-100;
+                height: 40px;
+                outline: none;
+                @include transition-ease;
+
+                &:focus {
+                    @include transition-ease;
+                    border: $border-width-small solid $seance-300;
+                }
+            }
+
+            .button {
+                @include normal-button;
+                background-color: $seance-600;
+                color: $white-50;
+                ;
+                padding: $padding-small;
+                height: 40px;
+                width: 100%;
+                font-size: $font-size-medium;
+                font-weight: $font-weight-semi-bold;
+
+                &:hover {
+                    @include transition-ease;
+                    background-color: $seance-500;
+                }
+            }
+        }
+
+        .link {
+            a {
+                text-decoration: none;
+                color: $black-950;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.7rem;
+                @include transition-ease;
+
+                &:hover {
+                    color: $seance-500;
+                    @include transition-ease;
+                }
+
+            }
+
+            text-align: center;
+            margin-top: $margin-medium;
+        }
+    }
+}

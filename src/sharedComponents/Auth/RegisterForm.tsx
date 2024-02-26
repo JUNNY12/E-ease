@@ -2,7 +2,6 @@
 import { Input } from "../Input/Input"
 import { Typography } from "../Typography/Typography"
 import { Button } from "../Button/Button"
-import Logo from "../Logo/Logo"
 import styles from './auth.module.scss'
 import Link from "next/link"
 import { FormEvent } from "react"
@@ -167,7 +166,7 @@ export default function RegisterForm() {
                                 Register
                             </span>
                     }
-                    </Button>
+                </Button>
             </form>
 
             <p>

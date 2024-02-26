@@ -35,6 +35,7 @@ export default function LoginForm() {
         callbackUrl: callbackUrl ?? '/'
       })
 
+      console.log(res)
 
       if (res?.error === 'CredentialsSignin') {
         toast.error('Authenication failed: Check your username or password', {
@@ -115,6 +116,9 @@ export default function LoginForm() {
 
       <p>
         Don't have an account? <Link href="/auth/register">Sign Up</Link>
+      </p>
+      <p className={styles.forgotPassword}>
+        <Link href="/auth/forgotPassword">Forgot Password</Link>
       </p>
     </div>
   )

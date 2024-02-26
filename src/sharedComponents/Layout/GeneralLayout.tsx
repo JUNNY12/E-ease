@@ -26,18 +26,16 @@ export default function GeneralLayout({ children }: { children: React.ReactNode 
 
     if (pathName === informationPath || pathName === checkoutPath) {
         return (
-        <>
+            <>
                 <main>
                     {children}
                 </main>
                 <Footer />
-        </>
+            </>
         );
     }
 
-
-
-    if (pathName === loginPath || pathName === registerPath) {
+    if (pathName === loginPath || pathName === registerPath || pathName === '/auth/forgotPassword' || pathName === '/auth/passwordReset') {
         return (
             <main>
                 {children}
